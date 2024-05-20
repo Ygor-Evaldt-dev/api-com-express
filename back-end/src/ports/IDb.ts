@@ -1,4 +1,4 @@
-import { UserDto } from "@src/infra/repositories/user/UserDto";
+import { UserDto } from "@src/shared/dtos/UserDto";
 
 export default interface IDb {
     users: UserDto[];

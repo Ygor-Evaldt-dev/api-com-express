@@ -1,6 +1,6 @@
-import IUserRepository from '@src/ports/user/IUserRepository';
-import User from '@src/models/user/User';
-import MockOrm from '@src/infra/db/MockOrm';
+import IUserRepository from "@src/ports/user/IUserRepository";
+import User from "@src/models/user/User";
+import MockOrm from "@src/infra/db/MockOrm";
 import { UserDto } from "@src/shared/dtos/UserDto";
 
 export default class UserMockRepository implements IUserRepository {
@@ -10,13 +10,21 @@ export default class UserMockRepository implements IUserRepository {
         this.orm = new MockOrm();
     }
 
-    async findAll(): Promise<User[]> {
+    async findAll(): Promise<User[] | null> {
         const db = await this.orm.open();
-        return db.users.map(user => this.fromDataBase(user));
+
+        return db.users[0]
+            ? db.users.map(user => this.fromDataBase(user))
+            : null
     }
 
-    async find(email: string): Promise<User> {
-        throw new Error('Method not implemented.');
+    async find(email: string): Promise<User | null> {
+        const db = await this.orm.open();
+        const user = db.users.find(user => user.email === email);
+
+        return user
+            ? this.fromDataBase(user)
+            : null;
     }
 
     async save(user: User): Promise<void> {
@@ -30,7 +38,7 @@ export default class UserMockRepository implements IUserRepository {
     }
 
     async update(user: User): Promise<void> {
-        throw new Error('Method not implemented.');
+        throw new Error("Method not implemented.");
     }
 
     async delete(): Promise<void> {
