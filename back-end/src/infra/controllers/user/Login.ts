@@ -11,6 +11,6 @@ export default class Login {
             } catch (error: any) {
                 //tratar erro
             }
-        })
+        });
     }
 }

@@ -1,7 +1,7 @@
-import IUserRepository from '@src/ports/repositories/IUserRepository';
+import IUserRepository from '@src/ports/user/IUserRepository';
 import User from '@src/models/user/User';
 import MockOrm from '@src/infra/db/MockOrm';
-import { UserDto } from './UserDto';
+import { UserDto } from "@src/shared/dtos/UserDto";
 
 export default class UserMockRepository implements IUserRepository {
     private orm: MockOrm;
@@ -27,6 +27,10 @@ export default class UserMockRepository implements IUserRepository {
 
         db.users.push(this.toDataBase(user));
         this.orm.save(db);
+    }
+
+    async update(user: User): Promise<void> {
+        throw new Error('Method not implemented.');
     }
 
     async delete(): Promise<void> {
