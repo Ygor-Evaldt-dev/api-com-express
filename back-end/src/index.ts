@@ -3,8 +3,10 @@ import StartConfig from '@src/infra/routes/Start';
 
 import UserMockRepository from '@src/infra/repositories/user/UserMockRepository';
 
-import DefaultRoute from '@src/infra/controllers/Default';
 import SaveUser from '@src/services/user/Save';
+
+import DefaultRoute from '@src/infra/controllers/Default';
+import SaveUserController from "@src/infra/controllers/user/Save";
 
 // Add configurations on the server
 new StartConfig(server);
@@ -13,6 +15,7 @@ new StartConfig(server);
 new DefaultRoute(server);
 
 
-// Setting user routes
+// Setting user routes - controllers
 const userMockRepository = new UserMockRepository();
-new SaveUser(userMockRepository);
+const saveUser = new SaveUser(userMockRepository);
+new SaveUserController(server, saveUser);
