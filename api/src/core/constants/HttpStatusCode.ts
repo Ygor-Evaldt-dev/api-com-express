@@ -2,7 +2,7 @@
  * Hypertext Transfer Protocol (HTTP) response status codes.
  * @see {@link https://en.wikipedia.org/wiki/List_of_HTTP_status_codes}
  */
-enum HttpStatusCodes {
+enum HttpStatusCode {
     CONTINUE = 100,
     SWITCHING_PROTOCOLS = 101,
     PROCESSING = 102,
@@ -66,4 +66,4 @@ enum HttpStatusCodes {
     NETWORK_AUTHENTICATION_REQUIRED = 511
 }
 
-export default HttpStatusCodes;
+export default HttpStatusCode;

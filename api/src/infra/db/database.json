@@ -1,11 +1,11 @@
 {
     "users": [
         {
-            "id": "fc4b1747-18f0-4a18-b005-735b64995d2f",
-            "email": "usuario.01@gmail.com",
-            "senha": "12345678",
-            "telefone": "51983313468",
-            "nome_usuario": "usuario.01"
+            "id": "68011473-74c5-4942-8fe3-ac8e14f5b196",
+            "email": "admin@gmail.com",
+            "senha": "$2b$12$KfshOEr7WjgBqYA4cvuFsOSPsphZVUCpcTHLqeLoKpGe3gF0DdbHm",
+            "telefone": "51988887777",
+            "nome_usuario": "admin"
         }
     ],
     "products": []

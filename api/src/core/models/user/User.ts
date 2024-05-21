@@ -1,16 +1,10 @@
-import Entity from "@src/shared/Entity";
-
-type Props = {
-    id?: string,
-    username: string,
-    password: string,
-    email: string,
-    phone: string
-}
+import Entity from "@src/core/models/Entity";
+import { Props } from "./Props";
+import Password from "@src/core/value-objects/Password";
 
 export default class User extends Entity {
     readonly username: string;
-    readonly password: string;;
+    readonly password: Password;;
     readonly email: string;;
     readonly phone: string;
 
@@ -23,7 +17,7 @@ export default class User extends Entity {
     }: Props) {
         super(id!);
         this.username = username;
-        this.password = password;
+        this.password = new Password(password);
         this.email = email;
         this.phone = phone;
     }

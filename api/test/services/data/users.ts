@@ -1,8 +1,14 @@
 export default {
+    wrongPassword: {
+        email: "wrong_user@gmail.com",
+        username: "wrong_user",
+        password: "wrong",
+        phone: "51988887777"
+    },
     new: {
-        email: "usuario.01@gmail.com",
-        nome_usuario: "usuario.01",
-        senha: "12345678",
-        telefone: "51983313468"
+        email: "admin@gmail.com",
+        username: "admin",
+        password: "Myp@ssw0rd",
+        phone: "51988887777"
     }
 }

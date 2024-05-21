@@ -1,7 +1,7 @@
 import { Express, Request, Response } from "express";
 
 import UserSave from "@src/core/services/user/Save";
-import HttpStatusCodes from "@src/core/constants/HttpStatusCodes";
+import HttpStatusCode from "@src/core/constants/HttpStatusCode";
 
 export default class Save {
     constructor(
@@ -11,9 +11,9 @@ export default class Save {
         this.server.post("/usuario/salvar", async (req: Request, res: Response) => {
             try {
                 const newUser = await this.usecase.execute({ ...req.body });
-                res.status(HttpStatusCodes.CREATED).send(newUser);
+                res.status(HttpStatusCode.CREATED).send(newUser);
             } catch (error: any) {
-                res.status(HttpStatusCodes.BAD_REQUEST).send(error.message);
+                res.status(HttpStatusCode.BAD_REQUEST).send(error.message);
             }
         });
     }

@@ -1,4 +1,4 @@
-import HttpStatusCodes from "@src/core/constants/HttpStatusCodes";
+import HttpStatusCode from "@src/core/constants/HttpStatusCode";
 import { Express, Request, Response } from "express";
 
 export default class Default {
@@ -6,7 +6,7 @@ export default class Default {
         private server: Express
     ) {
         this.server.get("/", (req: Request, res: Response) => {
-            res.status(HttpStatusCodes.OK).send("Servidor online");
+            res.status(HttpStatusCode.OK).send("Servidor online");
         });
     }
 }

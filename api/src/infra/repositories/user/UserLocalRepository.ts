@@ -1,4 +1,4 @@
-import IUserRepository from "@src/core/ports/user/IUserRepository";
+import IUserRepository from "@src/core/ports/repository-interfaces/IUserRepository";
 import User from "@src/core/models/user/User";
 import FileOrm from "@src/infra/db/FileOrm";
 import UserDto from "@src/application/dtos/UserDto";
@@ -49,7 +49,7 @@ export default class UserLocalRepository implements IUserRepository {
         return new UserDto(
             id.value,
             email,
-            password,
+            password.value,
             phone,
             username
         )
