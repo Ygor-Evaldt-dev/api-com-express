@@ -1,0 +1,12 @@
+{
+    "users": [
+        {
+            "id": "8f7d3449-6fdf-4a7e-9f59-571bc7b778d3",
+            "email": "admin@gmail.com",
+            "senha": "$2b$12$XwdwoCXlVheC2m/FF2FLuuyf5eZQH7RaD.eyXDE2ShmDELWldIk/q",
+            "telefone": "51988887777",
+            "nome_usuario": "admin"
+        }
+    ],
+    "products": []
+}
