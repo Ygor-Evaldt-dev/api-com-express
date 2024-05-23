@@ -5,10 +5,16 @@ export default {
         password: "Admin@123",
         phone: "51988887777"
     },
+    shortPassword: {
+        username: "any",
+        email: "any@gmail.com",
+        password: "short",
+        phone: "51988887777"
+    },
     invalidPassword: {
         username: "any",
         email: "any@gmail.com",
-        password: "any",
+        password: "shortpass",
         phone: "51988887777"
     }
 }

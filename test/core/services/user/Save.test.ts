@@ -4,7 +4,7 @@ import UserLocalRepository from "@/infra/repositories/user/UserLocalRepository";
 
 import users from "./data";
 
-describe('save user', () => {
+describe("save user", () => {
     function makeSut() {
         const repository = new UserLocalRepository();
         const encrypter = new BcryptAdapter();
@@ -17,23 +17,29 @@ describe('save user', () => {
         });
     }
 
-    test.skip('should save a new user', async () => {
+    test.skip("should save a new user", async () => {
         const { usecase } = makeSut();
         const newUser = await usecase.execute(users.exists);
 
-        expect(newUser).toHaveProperty('id');
+        expect(newUser).toHaveProperty("id");
     });
 
-    test('should throw if is user existing', async () => {
+    test("should throw error if is user existing", async () => {
         const { usecase } = makeSut();
         const exec = async () => await usecase.execute(users.exists);
-        await expect(exec()).rejects.toThrow('Usuário já cadastrado');
+        await expect(exec()).rejects.toThrow("Usuário já cadastrado");
     });
 
-    test('should throw if is user has invalid password', async () => {
+    test("should throw error if is user has short password", async () => {
+        const { usecase } = makeSut();
+        const exec = async () => await usecase.execute(users.shortPassword);
+        await expect(exec()).rejects.toThrow("A senha deve ter no mínimo 6 caracteres");
+    });
+
+    test("should throw error if is user has invalid password", async () => {
         const { usecase } = makeSut();
         const exec = async () => await usecase.execute(users.invalidPassword);
-        await expect(exec()).rejects.toThrow('A senha deve ter no mínimo 6 caracteres');
+        await expect(exec()).rejects.toThrow("A senha deve conter pelo menos uma letra maiúscula, um caractere especial e um número");
     });
 
 });

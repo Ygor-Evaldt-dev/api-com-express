@@ -48,10 +48,10 @@ export default class UserLocalRepository implements IUserRepository {
     private toDataBase({ id, email, password, phone, username }: User): UserDto {
         return new UserDto(
             id.value,
-            email,
+            email.complete,
             password.value,
             phone,
-            username
+            username.value
         )
     }
 

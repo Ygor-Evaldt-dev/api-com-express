@@ -1,9 +1,9 @@
 {
     "users": [
         {
-            "id": "8f7d3449-6fdf-4a7e-9f59-571bc7b778d3",
+            "id": "ca0ca387-f338-4f42-ac4e-9a7f77dc434e",
             "email": "admin@gmail.com",
-            "senha": "$2b$12$XwdwoCXlVheC2m/FF2FLuuyf5eZQH7RaD.eyXDE2ShmDELWldIk/q",
+            "senha": "$2b$12$AYLIWq4Y0THRL3cHrV8UROyFbFcj64KVtdfPEIrEl29NBJwBoNNli",
             "telefone": "51988887777",
             "nome_usuario": "admin"
         }
