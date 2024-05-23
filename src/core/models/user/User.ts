@@ -1,5 +1,5 @@
 import Entity from "@/core/models/Entity";
-import { Props } from "./Props";
+import Props from "./Props";
 import Password from "@/core/shared/value-objects/Password";
 
 export default class User extends Entity {

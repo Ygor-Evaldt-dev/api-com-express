@@ -1,4 +1,4 @@
-export type Props = {
+export default interface Props {
     id?: string,
     username: string,
     password: string,
