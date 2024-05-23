@@ -1,4 +1,4 @@
-import SaveUser from "@/core/services/user/Save";
+import SaveUser from "@/application/services/user/Save";
 import BcryptAdapter from "@/infra/adapters/BcryptAdapter";
 import UserLocalRepository from "@/infra/repositories/user/UserLocalRepository";
 
@@ -18,7 +18,7 @@ describe("save user", () => {
     }
 
     test.skip("should save a new user", async () => {
-        const { usecase } = makeSut();
+        const { usecase, repository } = makeSut();
         const newUser = await usecase.execute(users.exists);
 
         expect(newUser).toHaveProperty("id");

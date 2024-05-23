@@ -1,12 +1,4 @@
 {
-    "users": [
-        {
-            "id": "ca0ca387-f338-4f42-ac4e-9a7f77dc434e",
-            "email": "admin@gmail.com",
-            "senha": "$2b$12$AYLIWq4Y0THRL3cHrV8UROyFbFcj64KVtdfPEIrEl29NBJwBoNNli",
-            "telefone": "51988887777",
-            "nome_usuario": "admin"
-        }
-    ],
+    "users": [],
     "tasks": []
 }

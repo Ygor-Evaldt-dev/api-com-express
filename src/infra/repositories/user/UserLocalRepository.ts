@@ -41,8 +41,11 @@ export default class UserLocalRepository implements IUserRepository {
         throw new Error("Method not implemented.");
     }
 
-    async delete(): Promise<void> {
-        throw new Error('Method not implemented.');
+    async delete(id: string): Promise<void> {
+        const db = await this.orm.open();
+
+        db.users = db.users.map(user => user.id !== id);
+        this.orm.save(db);
     }
 
     private toDataBase({ id, email, password, phone, username }: User): UserDto {

@@ -1,4 +1,4 @@
-import IUseCase from "@/core/services/IUseCase";
+import IUseCase from "@/application/services/IUseCase";
 import User from "@/core/models/user/User";
 import IEncrypter from "@/core/ports/IEncrypter";
 import IUserRepository from "@/core/ports/repository-interfaces/IUserRepository";
