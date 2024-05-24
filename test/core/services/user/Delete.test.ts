@@ -19,4 +19,10 @@ describe('delete user', () => {
         const exec = async () => await usecase.execute(users.exists.email);
         await expect(exec()).resolves.toBeUndefined();
     });
+
+    test("should throw error if user doesn't exists", async () => {
+        const { usecase } = makeSut();
+        const exec = async () => await usecase.execute("nonexistent@gmail.com");
+        await expect(exec()).rejects.toThrow("Usuário não cadastrado");
+    });
 });
