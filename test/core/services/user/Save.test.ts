@@ -17,7 +17,7 @@ describe("save user", () => {
         });
     }
 
-    test.skip("should save a new user", async () => {
+    test("should save a new user", async () => {
         const { usecase, repository } = makeSut();
         const newUser = await usecase.execute(users.exists);
 

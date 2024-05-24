@@ -44,7 +44,7 @@ export default class UserLocalRepository implements IUserRepository {
     async delete(id: string): Promise<void> {
         const db = await this.orm.open();
 
-        db.users = db.users.map(user => user.id !== id);
+        db.users = db.users.filter(user => user.id !== id);
         this.orm.save(db);
     }
 
