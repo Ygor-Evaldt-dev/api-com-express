@@ -14,9 +14,7 @@ export default class Save implements IUseCase<Input, User> {
     constructor(
         private repository: IUserRepository,
         private encrypter: IEncrypter
-    ) {
-        this.repository = repository;
-    }
+    ) { }
 
     async execute({ username, email, password, phone }: Input): Promise<User> {
         const exists = await this.repository.find(email);
