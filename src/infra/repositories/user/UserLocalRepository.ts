@@ -53,7 +53,7 @@ export default class UserLocalRepository implements IUserRepository {
             id.value,
             email.complete,
             password.value,
-            phone,
+            phone.value,
             username.value
         )
     }
