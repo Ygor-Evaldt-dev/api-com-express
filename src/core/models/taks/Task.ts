@@ -1,19 +1,20 @@
+import SimpleTitle from "@/core/shared/value-objects/SimpleTitle";
 import Entity from "../Entity";
 import Props from "./Props";;
 
 export default class Taks extends Entity {
-    readonly title: string;
-    readonly description: string;
+    readonly title: SimpleTitle;
+    readonly description?: string;
     readonly finished: boolean;
 
     constructor({
         id,
         title,
         description,
-        finished
+        finished = false
     }: Props) {
         super(id!);
-        this.title = title;
+        this.title = new SimpleTitle(title);
         this.description = description;
         this.finished = finished;
     }

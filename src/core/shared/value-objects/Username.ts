@@ -8,6 +8,5 @@ export default class Username {
         if (this.value.length > this.max) throw new Error(`O nome de usuário deve ter no máximo ${this.max} caracteres`);
 
         this.value = this.value.trim().toLowerCase();
-
     }
 }
