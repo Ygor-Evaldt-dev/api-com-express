@@ -1,5 +1,5 @@
 import Save from "@/application/services/task/Save";
-import TaskLocalRepository from "@/infra/repositories/task/TaskLocalRepository";
+import TaskLocalRepository from "@/infra/repositories/task/LocalRepository";
 
 import tasks from "./data";
 

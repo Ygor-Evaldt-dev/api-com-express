@@ -2,9 +2,9 @@ import IUserRepository from "@/core/ports/repository-interfaces/IUserRepository"
 import User from "@/core/models/user/User";
 import FileOrm from "@/infra/db/FileOrm";
 
-import { UserEntity } from "./UserEntity";
+import { IEntity } from "./IEntity";
 
-export default class UserLocalRepository implements IUserRepository {
+export default class LocalRepository implements IUserRepository {
     private orm: FileOrm;
 
     constructor() {
@@ -42,7 +42,7 @@ export default class UserLocalRepository implements IUserRepository {
         this.orm.save(db);
     }
 
-    private toDataBase({ id, email, password, phone, username }: User): UserEntity {
+    private toDataBase({ id, email, password, phone, username }: User): IEntity {
         return ({
             id: id.value,
             email: email.complete,
@@ -52,7 +52,7 @@ export default class UserLocalRepository implements IUserRepository {
         });
     }
 
-    private fromDataBase({ id, email, senha, telefone, nome_usuario }: UserEntity): User {
+    private fromDataBase({ id, email, senha, telefone, nome_usuario }: IEntity): User {
         return new User({
             id,
             email,

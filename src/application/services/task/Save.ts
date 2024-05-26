@@ -1,4 +1,4 @@
-import Dto from "@/application/dtos/TaskDto";
+import Dto from "@/application/dtos/ITaskDto";
 import IUseCase from "../IUseCase";
 import Task from "@/core/models/taks/Task";
 import ITaskRepository from "@/core/ports/repository-interfaces/ITaskRepository";

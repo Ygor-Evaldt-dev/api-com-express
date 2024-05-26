@@ -1,6 +1,7 @@
-import Dto from "@/application/dtos/UserDto";
-import IUseCase from "@/application/services/IUseCase";
+import Dto from "@/application/dtos/IUserDto";
 import User from "@/core/models/user/User";
+
+import IUseCase from "@/application/services/IUseCase";
 import IEncrypter from "@/core/ports/IEncrypter";
 import IUserRepository from "@/core/ports/repository-interfaces/IUserRepository";
 

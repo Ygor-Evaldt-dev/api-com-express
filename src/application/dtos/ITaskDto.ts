@@ -1,4 +1,4 @@
-export default interface TaskDto {
+export default interface ITaskDto {
     title: string;
     finished?: boolean;
     description?: string;

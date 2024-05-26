@@ -2,9 +2,9 @@ import Task from "@/core/models/taks/Task";
 import ITaskRepository from "@/core/ports/repository-interfaces/ITaskRepository";
 import FileOrm from "@/infra/db/FileOrm";
 
-import { TaskEntity } from "./TaskEntity";
+import { IEntity } from "./IEntity";
 
-export default class TaskLocalRepository implements ITaskRepository {
+export default class LocalRepository implements ITaskRepository {
     private orm = new FileOrm();
 
     async save(task: Task): Promise<void> {
@@ -22,7 +22,7 @@ export default class TaskLocalRepository implements ITaskRepository {
             : null
     }
 
-    private toDataBase({ id, title, finished, description }: Task): TaskEntity {
+    private toDataBase({ id, title, finished, description }: Task): IEntity {
         return ({
             id: id.value,
             titulo: title.lowerCase,
@@ -31,7 +31,7 @@ export default class TaskLocalRepository implements ITaskRepository {
         });
     }
 
-    private fromDataBase(task: TaskEntity): Task {
+    private fromDataBase(task: IEntity): Task {
         return new Task({
             id: task.id,
             title: task.titulo,

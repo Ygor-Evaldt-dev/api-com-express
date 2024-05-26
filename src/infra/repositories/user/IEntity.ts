@@ -1,4 +1,4 @@
-export type UserEntity = {
+export type IEntity = {
     id: string;
     email: string;
     senha: string;

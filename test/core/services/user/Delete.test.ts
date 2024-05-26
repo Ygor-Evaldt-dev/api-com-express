@@ -1,5 +1,5 @@
 import Delete from "@/application/services/user/Delete";
-import UserLocalRepository from "@/infra/repositories/user/UserLocalRepository";
+import UserLocalRepository from "@/infra/repositories/user/LocalRepository";
 
 import users from "./data";
 import SaveUser from "@/application/services/user/Save";

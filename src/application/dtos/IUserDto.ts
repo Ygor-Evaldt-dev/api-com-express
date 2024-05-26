@@ -1,4 +1,4 @@
-export default interface UserDto {
+export default interface IUserDto {
     email: string;
     password: string;
     phone: string;

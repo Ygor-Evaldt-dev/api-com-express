@@ -1,4 +1,4 @@
-export type TaskEntity = {
+export type IEntity = {
     id: string;
     titulo: string;
     finalizada: boolean,
