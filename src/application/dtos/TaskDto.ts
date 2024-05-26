@@ -1,5 +1,5 @@
 export default interface TaskDto {
     title: string;
-    finished: boolean;
+    finished?: boolean;
     description?: string;
 }
