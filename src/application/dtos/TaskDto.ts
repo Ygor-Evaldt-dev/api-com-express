@@ -1,8 +1,5 @@
-export default class TaskDto {
-    constructor(
-        readonly id: string,
-        readonly titulo: string,
-        readonly finalizada: boolean,
-        readonly descricao?: string
-    ) { }
+export default interface TaskDto {
+    title: string;
+    finished: boolean;
+    description?: string;
 }

@@ -1,7 +1,8 @@
-import TaskDto from "@/application/dtos/TaskDto";
 import Task from "@/core/models/taks/Task";
 import ITaskRepository from "@/core/ports/repository-interfaces/ITaskRepository";
 import FileOrm from "@/infra/db/FileOrm";
+
+import { TaskEntity } from "./TaskEntity";
 
 export default class TaskLocalRepository implements ITaskRepository {
     private orm = new FileOrm();
@@ -21,16 +22,16 @@ export default class TaskLocalRepository implements ITaskRepository {
             : null
     }
 
-    private toDataBase({ id, title, finished, description }: Task): TaskDto {
-        return new TaskDto(
-            id.value,
-            title.lowerCase,
-            finished,
-            description
-        )
+    private toDataBase({ id, title, finished, description }: Task): TaskEntity {
+        return ({
+            id: id.value,
+            titulo: title.lowerCase,
+            finalizada: finished,
+            descricao: description
+        });
     }
 
-    private fromDataBase(task: TaskDto): Task {
+    private fromDataBase(task: TaskEntity): Task {
         return new Task({
             id: task.id,
             title: task.titulo,

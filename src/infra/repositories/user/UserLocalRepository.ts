@@ -1,7 +1,8 @@
 import IUserRepository from "@/core/ports/repository-interfaces/IUserRepository";
 import User from "@/core/models/user/User";
 import FileOrm from "@/infra/db/FileOrm";
-import UserDto from "@/application/dtos/UserDto";
+
+import { UserEntity } from "./UserEntity";
 
 export default class UserLocalRepository implements IUserRepository {
     private orm: FileOrm;
@@ -41,17 +42,17 @@ export default class UserLocalRepository implements IUserRepository {
         this.orm.save(db);
     }
 
-    private toDataBase({ id, email, password, phone, username }: User): UserDto {
-        return new UserDto(
-            id.value,
-            email.complete,
-            password.value,
-            phone.value,
-            username.value
-        )
+    private toDataBase({ id, email, password, phone, username }: User): UserEntity {
+        return ({
+            id: id.value,
+            email: email.complete,
+            senha: password.value,
+            telefone: phone.value,
+            nome_usuario: username.value
+        });
     }
 
-    private fromDataBase({ id, email, senha, telefone, nome_usuario }: UserDto): User {
+    private fromDataBase({ id, email, senha, telefone, nome_usuario }: UserEntity): User {
         return new User({
             id,
             email,
