@@ -30,15 +30,8 @@ export default class UserLocalRepository implements IUserRepository {
     async save(user: User): Promise<void> {
         const db = await this.orm.open();
 
-        const isUserExists = db.users.find(register => register.email === user.email);
-        if (isUserExists) throw new Error("Usuário já cadastrado");
-
         db.users.push(this.toDataBase(user));
         this.orm.save(db);
-    }
-
-    async update(user: User): Promise<void> {
-        throw new Error("Method not implemented.");
     }
 
     async delete(id: string): Promise<void> {
