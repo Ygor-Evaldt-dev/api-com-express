@@ -21,7 +21,7 @@ describe("save user", () => {
     }
 
     test("should save a new user", async () => {
-        const { usecase, repository } = makeSut();
+        const { usecase } = makeSut();
         const newUser = await usecase.execute(users.exists);
 
         expect(newUser).toHaveProperty("id");

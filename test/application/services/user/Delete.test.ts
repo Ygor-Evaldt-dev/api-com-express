@@ -1,22 +1,18 @@
+import User from "@/core/models/user/User";
+
 import Delete from "@/application/services/user/Delete";
 import UserLocalRepository from "@/infra/repositories/user/LocalRepository";
 
 import users from "./data";
-import SaveUser from "@/application/services/user/Save";
-import BcryptAdapter from "@/infra/adapters/BcryptAdapter";
 
 describe('delete user', () => {
     function makeSut() {
         const repository = new UserLocalRepository();
-        const encrypter = new BcryptAdapter();
-
         const usecase = new Delete(repository);
-        const saveUser = new SaveUser(repository, encrypter);
 
         return ({
             repository,
-            usecase,
-            saveUser
+            usecase
         });
     }
 
@@ -27,10 +23,12 @@ describe('delete user', () => {
     });
 
     test("should delete a exists user", async () => {
-        const { usecase, saveUser } = makeSut();
-        await saveUser.execute(users.exists);
+        const { usecase, repository } = makeSut();
 
-        const exec = async () => await usecase.execute(users.exists.email);
+        const newUser = new User({ ...users.exists });
+        await repository.save(newUser);
+
+        const exec = async () => await usecase.execute(newUser.email.complete);
         await expect(exec()).resolves.toBeUndefined();
     });
 });
