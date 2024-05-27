@@ -22,6 +22,13 @@ export default class LocalRepository implements ITaskRepository {
             : null
     }
 
+    async delete(id: string): Promise<void> {
+        const db = await this.orm.open();
+        db.tasks = db.tasks.filter(task => task.id !== id);
+
+        this.orm.save(db);
+    }
+
     private toDataBase({ id, title, finished, description }: Task): IEntity {
         return ({
             id: id.value,

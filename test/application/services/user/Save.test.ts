@@ -1,9 +1,9 @@
 import SaveUser from "@/application/services/user/Save";
+import DeleteUser from "@/application/services/user/Delete";
 import BcryptAdapter from "@/infra/adapters/BcryptAdapter";
 import UserLocalRepository from "@/infra/repositories/user/LocalRepository";
 
 import users from "./data";
-import DeleteUser from "@/application/services/user/Delete";
 
 describe("save user", () => {
     function makeSut() {
