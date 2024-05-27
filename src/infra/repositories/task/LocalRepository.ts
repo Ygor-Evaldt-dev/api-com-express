@@ -1,4 +1,4 @@
-import Task from "@/core/models/taks/Task";
+import Task from "@/core/models/task/Task";
 import ITaskRepository from "@/core/ports/repository-interfaces/ITaskRepository";
 import FileOrm from "@/infra/db/FileOrm";
 

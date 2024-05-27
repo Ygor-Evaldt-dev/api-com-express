@@ -2,7 +2,7 @@ import SimpleTitle from "@/core/shared/value-objects/SimpleTitle";
 import Entity from "../Entity";
 import Props from "./Props";;
 
-export default class Taks extends Entity {
+export default class Task extends Entity {
     readonly title: SimpleTitle;
     readonly description?: string;
     readonly finished: boolean;

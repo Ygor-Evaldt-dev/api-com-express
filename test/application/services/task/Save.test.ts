@@ -15,10 +15,13 @@ describe("save task", () => {
     }
 
     test("should save a new task", async () => {
-        const { usecase } = makeSut();
+        const { usecase, repository } = makeSut();
+
         const task = await usecase.execute(tasks.new);
+        await repository.delete(task.id.value);
 
         expect(task).toBeDefined();
         expect(task).toHaveProperty("id");
+
     });
 })

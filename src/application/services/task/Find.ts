@@ -1,6 +1,6 @@
 import ITaskRepository from "@/core/ports/repository-interfaces/ITaskRepository";
 import IUseCase from "../IUseCase";
-import Task from "@/core/models/taks/Task";
+import Task from "@/core/models/task/Task";
 
 export default class Find implements IUseCase<string, Promise<Task> | null> {
     constructor(

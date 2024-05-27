@@ -1,5 +1,5 @@
 import FindTask from "@/application/services/task/Find";
-import Task from "@/core/models/taks/Task";
+import Task from "@/core/models/task/Task";
 import TaskLocalRepository from "@/infra/repositories/task/LocalRepository";
 
 import tasks from "./data";
@@ -22,7 +22,7 @@ describe("find task", () => {
         await repository.save(newTask);
 
         const task = await usecase.execute(newTask.id.value);
-        //deletar tarefa.
+        await repository.delete(newTask.id.value);
 
         expect(task).toBeDefined();
         expect(task?.id.value).toBe(newTask.id.value);
