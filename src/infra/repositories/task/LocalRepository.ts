@@ -22,11 +22,26 @@ export default class LocalRepository implements ITaskRepository {
             : null
     }
 
+    async findAll(page: number, take: number): Promise<[] | Task[]> {
+        const db = await this.orm.open();
+        const totalPages = db.tasks.length / take;
+        if (page > totalPages || page < 0) return [];
+
+        const begin = (page == 0) ? page : page * take;
+
+        return db.tasks.slice(begin, take)
+    }
+
     async delete(id: string): Promise<void> {
         const db = await this.orm.open();
         db.tasks = db.tasks.filter(task => task.id !== id);
 
         this.orm.save(db);
+    }
+
+    async total(): Promise<number> {
+        const db = await this.orm.open();
+        return db.tasks.length;
     }
 
     private toDataBase({ id, title, finished, description }: Task): IEntity {
