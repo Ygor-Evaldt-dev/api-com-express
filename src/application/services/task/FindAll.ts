@@ -3,6 +3,7 @@ import IUseCase from "../IUseCase";
 import Task from "@/core/models/task/Task";
 
 type Input = {
+    userId: string,
     page: number;
     take: number;
 }
@@ -14,15 +15,15 @@ type Output = {
     registers: Task[] | [];
 }
 
-export default class FindAll implements IUseCase<Input, Output> {
+export default class FindBy implements IUseCase<Input, Output> {
     constructor(
         private repository: ITaskRepository
     ) { }
 
-    async execute({ page, take }: Input): Promise<Output> {
+    async execute({ userId, page, take }: Input): Promise<Output> {
         const promises: [Promise<number>, Promise<Task[] | []>] = [
             this.repository.total(),
-            this.repository.findAll(page, take)
+            this.repository.findBy(userId, page, take)
         ];
         const [total, registers] = await Promise.all(promises);
 

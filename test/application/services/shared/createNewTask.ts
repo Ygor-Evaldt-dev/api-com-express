@@ -1,5 +1,6 @@
 import UserLocalRepository from "@/infra/repositories/user/LocalRepository";
 import User from "@/core/models/user/User";
+
 import TaskLocalRepository from "@/infra/repositories/task/LocalRepository";
 import Task from "@/core/models/task/Task";
 
