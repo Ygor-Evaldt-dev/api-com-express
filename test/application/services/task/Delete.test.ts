@@ -1,16 +1,18 @@
-import DeleteTask from "@/application/services/task/Delete";
-import Task from "@/core/models/task/Task";
+import UserLocalRepository from "@/infra/repositories/user/LocalRepository";
 import TaskLocalRepository from "@/infra/repositories/task/LocalRepository";
+import DeleteTask from "@/application/services/task/Delete";
 
-import tasks from "./data";
+import createNewTask from "../shared/createNewTask";
 
 describe('delete task', () => {
     function makeSut() {
-        const repository = new TaskLocalRepository();
-        const usecase = new DeleteTask(repository);
+        const userRepository = new UserLocalRepository();
+        const taskRepository = new TaskLocalRepository();
+        const usecase = new DeleteTask(taskRepository);
 
         return ({
-            repository,
+            userRepository,
+            taskRepository,
             usecase
         });
     }
@@ -22,12 +24,12 @@ describe('delete task', () => {
     });
 
     test("should delete an exists task", async () => {
-        const { usecase, repository } = makeSut();
+        const { usecase, userRepository } = makeSut();
+        const { user, task } = await createNewTask();
 
-        const newTask = new Task({ ...tasks.new });
-        await repository.save(newTask);
+        await userRepository.delete(user.id.value);
 
-        const exec = async () => await usecase.execute(newTask.id.value);
+        const exec = async () => await usecase.execute(task.id.value);
         await expect(exec()).resolves.toBeUndefined();
     });
 });

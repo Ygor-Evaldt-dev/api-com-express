@@ -13,6 +13,7 @@ export default class LocalRepository implements ITaskRepository {
         db.tasks.push(this.toDataBase(task));
         await this.orm.save(db);
     }
+
     async find(id: string): Promise<Task | null> {
         const db = await this.orm.open();
         const task = db.tasks.find(task => task.id === id);
@@ -36,7 +37,7 @@ export default class LocalRepository implements ITaskRepository {
         const db = await this.orm.open();
         db.tasks = db.tasks.filter(task => task.id !== id);
 
-        this.orm.save(db);
+        await this.orm.save(db);
     }
 
     async total(): Promise<number> {
@@ -44,21 +45,23 @@ export default class LocalRepository implements ITaskRepository {
         return db.tasks.length;
     }
 
-    private toDataBase({ id, title, finished, description }: Task): IEntity {
+    private toDataBase({ id, title, finished, description, userId }: Task): IEntity {
         return ({
             id: id.value,
             titulo: title.lowerCase,
             finalizada: finished,
-            descricao: description
+            descricao: description,
+            id_usuario: userId
         });
     }
 
-    private fromDataBase(task: IEntity): Task {
+    private fromDataBase({ id, titulo, descricao, finalizada, id_usuario }: IEntity): Task {
         return new Task({
-            id: task.id,
-            title: task.titulo,
-            description: task.descricao,
-            finished: task.finalizada
+            id,
+            title: titulo,
+            description: descricao,
+            finished: finalizada,
+            userId: id_usuario
         });
     }
 

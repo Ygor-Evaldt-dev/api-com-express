@@ -32,14 +32,14 @@ export default class LocalRepository implements IUserRepository {
         const db = await this.orm.open();
 
         db.users.push(this.toDataBase(user));
-        this.orm.save(db);
+        await this.orm.save(db);
     }
 
     async delete(id: string): Promise<void> {
         const db = await this.orm.open();
 
         db.users = db.users.filter(user => user.id !== id);
-        this.orm.save(db);
+        await this.orm.save(db);
     }
 
     private toDataBase({ id, email, password, phone, username }: User): IEntity {

@@ -8,8 +8,8 @@ export default class Save implements IUseCase<Dto, Task> {
         private repository: ITaskRepository
     ) { }
 
-    async execute({ title, finished, description }: Dto): Promise<Task> {
-        const task = new Task({ title, finished, description });
+    async execute({ title, finished, description, userId }: Dto): Promise<Task> {
+        const task = new Task({ title, finished, description, userId });
         await this.repository.save(task);
 
         return task;

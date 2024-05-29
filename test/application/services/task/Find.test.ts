@@ -2,29 +2,37 @@ import FindTask from "@/application/services/task/Find";
 import Task from "@/core/models/task/Task";
 import TaskLocalRepository from "@/infra/repositories/task/LocalRepository";
 
-import tasks from "./data";
+
+import User from "@/core/models/user/User";
+import UserLocalRepository from "@/infra/repositories/user/LocalRepository";
+
+import tasks from "../shared/tasks";
+import users from "../shared/users";
+import createNewTask from "../shared/createNewTask";
 
 describe("find task", () => {
     function makeSut() {
-        const repository = new TaskLocalRepository();
-        const usecase = new FindTask(repository);
+        const userRepository = new UserLocalRepository();
+        const taskRepository = new TaskLocalRepository();
+        const usecase = new FindTask(taskRepository);
 
         return ({
-            repository,
+            userRepository,
+            taskRepository,
             usecase
         });
     }
 
     test("should to find an exists task", async () => {
-        const { usecase, repository } = makeSut();
+        const { usecase, userRepository, taskRepository } = makeSut();
+        const { user, task } = await createNewTask();
 
-        const newTask = new Task({ ...tasks.new, id: "275fbd6b-b15f-403b-8fd2-203070d4708c" });
-        await repository.save(newTask);
+        const foundTask = await usecase.execute(task.id.value);
 
-        const task = await usecase.execute(newTask.id.value);
-        await repository.delete(newTask.id.value);
+        await taskRepository.delete(task.id.value);
+        userRepository.delete(user.id.value);
 
-        expect(task).toBeDefined();
-        expect(task?.id.value).toBe(newTask.id.value);
+        expect(foundTask).toBeDefined();
+        expect(foundTask?.id.value).toBe(task.id.value);
     });
-})
+});

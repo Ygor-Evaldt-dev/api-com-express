@@ -3,7 +3,7 @@ import User from "@/core/models/user/User";
 import Delete from "@/application/services/user/Delete";
 import UserLocalRepository from "@/infra/repositories/user/LocalRepository";
 
-import users from "./data";
+import users from "../shared/users";
 
 describe('delete user', () => {
     function makeSut() {
