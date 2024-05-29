@@ -27,7 +27,7 @@ export default class LocalRepository implements ITaskRepository {
         const db = await this.orm.open();
         const tasks = db.tasks.filter(task => task.id_usuario === userId);
 
-        const totalPages = tasks.length / take;
+        const totalPages = Math.round(tasks.length / take);
         if (page > totalPages || page < 0) return [];
 
         const begin = (page == 0) ? page : page * take;
@@ -42,9 +42,11 @@ export default class LocalRepository implements ITaskRepository {
         await this.orm.save(db);
     }
 
-    async total(): Promise<number> {
+    async total(userId?: string): Promise<number> {
         const db = await this.orm.open();
-        return db.tasks.length;
+        return userId
+            ? db.tasks.filter(task => task.id_usuario === userId).length
+            : db.tasks.length;
     }
 
     private toDataBase({ id, title, finished, description, userId }: Task): IEntity {

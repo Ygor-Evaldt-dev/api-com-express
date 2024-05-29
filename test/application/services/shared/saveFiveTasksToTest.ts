@@ -31,12 +31,9 @@ const tasks = [
     })
 ];
 
-export default async function saveFiveTasksToSave() {
+export default async function saveFiveTasksToTest() {
     const taskRepository = new TaskLocalRepository();
-    const userRepository = new UserLocalRepository();
-
-    await userRepository.save(user1);
-    await userRepository.save(user2);
+    await saveUsers([user1, user2]);
 
     for (const task of tasks) {
         await taskRepository.save(task);
@@ -47,4 +44,12 @@ export default async function saveFiveTasksToSave() {
         user2,
         tasks
     });
+}
+
+async function saveUsers(users: User[]) {
+    const userRepository = new UserLocalRepository();
+
+    for (const user of users) {
+        await userRepository.save(user);
+    }
 }

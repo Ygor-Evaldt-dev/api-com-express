@@ -22,7 +22,7 @@ export default class FindBy implements IUseCase<Input, Output> {
 
     async execute({ userId, page, take }: Input): Promise<Output> {
         const promises: [Promise<number>, Promise<Task[] | []>] = [
-            this.repository.total(),
+            this.repository.total(userId),
             this.repository.findBy(userId, page, take)
         ];
         const [total, registers] = await Promise.all(promises);

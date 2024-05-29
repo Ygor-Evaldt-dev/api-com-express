@@ -5,5 +5,5 @@ export default interface ITaskRepository {
     find(id: string): Promise<Task | null>;
     findBy(userId: string, page: number, take: number): Promise<Task[] | []>
     delete(id: string): Promise<void>,
-    total(): Promise<number>
+    total(userId?: string): Promise<number>
 }
