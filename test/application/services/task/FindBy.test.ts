@@ -47,4 +47,15 @@ describe("find by", () => {
 
         expect(userTasks.registers.length).toBe(3);
     });
+
+    test("should to find any task when user don't have tasks", async () => {
+        const { usecase } = makeSut();
+        const userTasks = await usecase.execute({
+            userId: "any",
+            page: 0,
+            take: 10
+        });
+
+        expect(userTasks.registers.length).toBe(0);
+    })
 });
