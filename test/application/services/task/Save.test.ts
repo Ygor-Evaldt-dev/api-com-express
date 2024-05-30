@@ -1,10 +1,12 @@
 import Save from "@/application/services/task/Save";
 import TaskLocalRepository from "@/infra/repositories/task/LocalRepository";
+
 import User from "@/core/models/user/User";
 import UserLocalRepository from "@/infra/repositories/user/LocalRepository";
 
 import tasks from "../shared/tasks";
 import users from "../shared/users";
+import Task from "@/core/models/task/Task";
 
 describe("save task", () => {
     function makeSut() {
@@ -25,12 +27,16 @@ describe("save task", () => {
         const user = new User(users.exists);
         await userRepository.save(user);
 
-        const task = await usecase.execute({ ...tasks.new, userId: user.id.value });
+        const task = new Task({ ...tasks.new, userId: user.id.value });
+        const exec = async () => await usecase.execute({
+            title: task.title.lowerCase,
+            userId: task.userId,
+            id: task.id.value
+        });
+
+        await expect(exec()).resolves.toBeUndefined();
 
         await userRepository.delete(user.id.value);
-        taskRepository.delete(task.id.value);
-
-        expect(task).toBeDefined();
-        expect(task).toHaveProperty("id");
+        await taskRepository.delete(task.id.value);
     });
 });

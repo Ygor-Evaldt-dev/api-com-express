@@ -1,4 +1,4 @@
-import SaveUser from "@/application/services/user/Save";
+import SaveUser from "@/application/services/user/save/Save";
 import DeleteUser from "@/application/services/user/Delete";
 import BcryptAdapter from "@/infra/adapters/BcryptAdapter";
 import UserLocalRepository from "@/infra/repositories/user/LocalRepository";
@@ -22,9 +22,8 @@ describe("save user", () => {
 
     test("should save a new user", async () => {
         const { usecase } = makeSut();
-        const newUser = await usecase.execute(users.exists);
-
-        expect(newUser).toHaveProperty("id");
+        const exec = async () => await usecase.execute(users.exists);
+        await expect(exec()).resolves.toBeUndefined();
     });
 
     test("should throw error if is user existing", async () => {
@@ -39,7 +38,7 @@ describe("save user", () => {
 
     test("should throw error if user has username with spaces", async () => {
         const { usecase } = makeSut();
-        const user = { ...users.exists, username: "any username" }
+        const user = { ...users.exists, username: "any username " }
 
         const exec = async () => await usecase.execute(user);
         await expect(exec()).rejects.toThrow("Nome de usuário não deve conter espaços vazios");

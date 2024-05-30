@@ -1,13 +1,7 @@
 import FindTask from "@/application/services/task/Find";
-import Task from "@/core/models/task/Task";
 import TaskLocalRepository from "@/infra/repositories/task/LocalRepository";
-
-
-import User from "@/core/models/user/User";
 import UserLocalRepository from "@/infra/repositories/user/LocalRepository";
 
-import tasks from "../shared/tasks";
-import users from "../shared/users";
 import createNewTask from "../shared/createNewTask";
 
 describe("find task", () => {
