@@ -19,10 +19,10 @@ describe("find by", () => {
 
         const userTasks = await usecase.execute({
             userId: user1.id.value,
-            page: 1,
-            take: 2
+            page: 0,
+            take: 4
         });
 
-        expect(userTasks.registers.length).toBe(1);
+        expect(userTasks.registers.length).toBe(3);
     });
 });

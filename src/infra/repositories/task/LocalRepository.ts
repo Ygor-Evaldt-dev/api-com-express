@@ -28,11 +28,14 @@ export default class LocalRepository implements ITaskRepository {
         const tasks = db.tasks.filter(task => task.id_usuario === userId);
 
         const totalPages = Math.round(tasks.length / take);
-        if (page > totalPages || page < 0) return [];
 
-        const begin = (page == 0) ? page : page * take;
+        if (page > totalPages) return tasks.slice(totalPages, (totalPages + 1) * take);
+        if (page < 0) return tasks.slice(0, 1 * take);
 
-        return tasks.slice(begin, take);
+        const begin = page * take;
+        const end = (page + 1) * take;
+
+        return tasks.slice(begin, end);
     }
 
     async delete(id: string): Promise<void> {
