@@ -57,5 +57,27 @@ describe("find by", () => {
         });
 
         expect(userTasks.registers.length).toBe(0);
-    })
+    });
+
+    test("should return correct page sended to get pagination", async () => {
+        const { usecase } = makeSut();
+        const userTasks = await usecase.execute({
+            userId: "any",
+            page: 0,
+            take: 10
+        });
+
+        expect(userTasks.take).toBe(10);
+    });
+
+    test("should return correct take sended to get pagination", async () => {
+        const { usecase } = makeSut();
+        const userTasks = await usecase.execute({
+            userId: "any",
+            page: 1,
+            take: 10
+        });
+
+        expect(userTasks.page).toBe(1);
+    });
 });
