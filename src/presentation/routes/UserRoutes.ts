@@ -1,8 +1,8 @@
 import { Express } from "express";
 
-import SaveUserController from "@/presentation/controllers/user/Save";
+import UserSaveController from "@/presentation/controllers/user/SaveController";
 import UserLocalRepository from "@/infra/repositories/user/LocalRepository";
-import SaveUser from "@/application/services/user/save/Save"
+import UserSave from "@/application/services/user/save/Save"
 
 import BcryptAdapter from "@/infra/adapters/BcryptAdapter";
 
@@ -13,8 +13,8 @@ export default class UserRoutes {
         const repository = new UserLocalRepository();
         const encrypter = new BcryptAdapter();
 
-        const saveUseCase = new SaveUser(repository, encrypter);
+        const saveUseCase = new UserSave(repository, encrypter);
 
-        new SaveUserController(this.server, saveUseCase);
+        new UserSaveController(this.server, saveUseCase);
     }
 }
