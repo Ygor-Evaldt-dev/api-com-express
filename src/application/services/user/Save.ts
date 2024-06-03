@@ -1,11 +1,15 @@
-import Dto from "@/application/dtos/IUserDto";
-import { Input } from "./Input";
-
 import User from "@/core/models/user/User";
 
 import IUseCase from "@/application/services/IUseCase";
 import IEncrypter from "@/core/ports/IEncrypter";
 import IUserRepository from "@/core/ports/repository-interfaces/IUserRepository";
+
+type Input = {
+    username: string,
+    email: string,
+    password: string,
+    phone: string
+}
 
 export default class Save implements IUseCase<Input, void> {
     constructor(
