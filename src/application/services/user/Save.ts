@@ -22,7 +22,7 @@ export default class Save implements IUseCase<Input, void> {
         if (exists) throw new Error("Usuário já cadastrado");
 
         const encryptPassword = await this.encrypter.encrypt(password);
-        const user = new User({ username, email, password, phone });
+        const user = new User({ name: username, email, password, phone });
 
         Object.assign(user, {
             password: {

@@ -1,4 +1,4 @@
-export default class SimpleTitle {
+export default class Title {
     constructor(
         readonly complete: string,
         private min: number = 3,

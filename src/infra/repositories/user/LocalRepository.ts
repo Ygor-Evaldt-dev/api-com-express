@@ -58,7 +58,7 @@ export default class LocalRepository implements IUserRepository {
             email,
             password: senha,
             phone: telefone,
-            username: nome_usuario
+            name: nome_usuario
         });
     }
 }
