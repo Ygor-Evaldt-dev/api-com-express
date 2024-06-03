@@ -42,13 +42,13 @@ export default class LocalRepository implements IUserRepository {
         await this.orm.save(db);
     }
 
-    private toDataBase({ id, email, password, phone, username }: User): IEntity {
+    private toDataBase({ id, email, password, phone, name }: User): IEntity {
         return ({
             id: id.value,
             email: email.complete,
             senha: password.value,
             telefone: phone.value,
-            nome_usuario: username.value
+            nome_usuario: name.value
         });
     }
 

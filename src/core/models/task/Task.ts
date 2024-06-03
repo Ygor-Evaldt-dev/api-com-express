@@ -1,4 +1,4 @@
-import Title from "@/core/shared/value-objects/SimpleTitle";
+import Title from "@/core/shared/value-objects/Title";
 import Entity from "../Entity";
 import Props from "./Props";;
 

@@ -25,7 +25,7 @@ describe('delete user', () => {
     test("should delete a exists user", async () => {
         const { usecase, repository } = makeSut();
 
-        const newUser = new User({ ...users.exists });
+        const newUser = new User({ ...users.new });
         await repository.save(newUser);
 
         const exec = async () => await usecase.execute(newUser.email.complete);

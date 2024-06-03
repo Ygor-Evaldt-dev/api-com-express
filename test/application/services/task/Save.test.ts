@@ -24,7 +24,7 @@ describe("save task", () => {
     test("should save a new task", async () => {
         const { usecase, userRepository, taskRepository } = makeSut();
 
-        const user = new User(users.exists);
+        const user = new User(users.new);
         await userRepository.save(user);
 
         const task = new Task({ ...tasks.new, userId: user.id.value });

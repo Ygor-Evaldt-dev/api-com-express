@@ -1,8 +1,7 @@
 import { Express, Request, Response } from "express";
 
-import SaveUser from "@/application/services/user/save/Save";
+import SaveUser from "@/application/services/user/Save";
 import HttpStatusCode from "@/presentation/constants/HttpStatusCode";
-import { Input } from "@/application/services/user/save/Input";
 
 export default class SaveController {
     constructor(
@@ -11,7 +10,7 @@ export default class SaveController {
     ) {
         this.server.post("/user/save", async (req: Request, res: Response) => {
             try {
-                const dto: Input = req.body;
+                const dto = req.body;
                 await this.usecase.execute(dto);
 
                 res.status(HttpStatusCode.CREATED).send("Usuário cadastrado com sucesso");

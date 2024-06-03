@@ -1,5 +1,5 @@
 export default {
-    exists: {
+    new: {
         name: "Administrador",
         email: "admin@gmail.com",
         password: "Admin@123",

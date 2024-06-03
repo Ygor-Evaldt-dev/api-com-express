@@ -6,8 +6,8 @@ import TaskLocalRepository from "@/infra/repositories/task/LocalRepository";
 
 import users from "./users";
 
-const user1 = new User(users.exists)
-const user2 = new User({ ...users.exists, email: "user02@gmail.com" });
+const user1 = new User(users.new)
+const user2 = new User({ ...users.new, email: "user02@gmail.com" });
 const tasks = [
     new Task({
         title: "Tarefa 01",

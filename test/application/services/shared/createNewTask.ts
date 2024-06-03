@@ -11,7 +11,7 @@ export default async function createNewTask() {
     const userRepository = new UserLocalRepository();
     const taskRepository = new TaskLocalRepository();
 
-    const user = new User({ ...users.exists });
+    const user = new User({ ...users.new });
     const task = new Task({ ...tasks.new, userId: user.id.value });
 
     await userRepository.save(user);
