@@ -1,4 +1,12 @@
 {
-    "users": [],
+    "users": [
+        {
+            "id": "515b9f9a-f6a3-4818-b99b-504ad965dd26",
+            "email": "evaldtygor@gmail.com",
+            "senha": "$2b$12$mgUjRoSr4AMawVAKn9eMA.J81VS7mRz7YP1ROwuGoRX2.XOT2ITxi",
+            "telefone": "51988887777",
+            "nome_usuario": "Administrador"
+        }
+    ],
     "tasks": []
 }

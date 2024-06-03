@@ -1,20 +1,26 @@
 import { Express } from "express";
 
-import UserSaveController from "@/presentation/controllers/user/SaveController";
-import UserLocalRepository from "@/infra/repositories/user/LocalRepository";
-import UserSave from "@/application/services/user/save/Save"
+import SaveController from "@/presentation/controllers/user/SaveController";
+import LocalRepository from "@/infra/repositories/user/LocalRepository";
+import Save from "@/application/services/user/Save"
+import Login from "@/application/services/user/Login";
 
 import BcryptAdapter from "@/infra/adapters/BcryptAdapter";
+import JwtAdapter from "@/infra/adapters/JwtAdapter";
+import LoginController from "../controllers/user/LoginController";
 
 export default class UserRoutes {
     constructor(
         private server: Express
     ) {
-        const repository = new UserLocalRepository();
+        const localRepository = new LocalRepository();
         const encrypter = new BcryptAdapter();
+        const tokenProvider = new JwtAdapter(process.env.SECRET_TOKEN!);
 
-        const saveUseCase = new UserSave(repository, encrypter);
+        const saveUseCase = new Save(localRepository, encrypter);
+        const loginUseCase = new Login(localRepository, encrypter, tokenProvider);
 
-        new UserSaveController(this.server, saveUseCase);
+        new SaveController(this.server, saveUseCase);
+        new LoginController(this.server, loginUseCase);
     }
 }
