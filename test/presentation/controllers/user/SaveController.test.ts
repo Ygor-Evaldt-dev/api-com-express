@@ -1,4 +1,5 @@
-import AxiosInstance from "../AxiosInstance";
+import AxiosInstance from "../../util/AxiosInstance";
+import users from "../../util/users";
 
 describe("user save controller", () => {
     const api = AxiosInstance.generate();
@@ -6,9 +7,8 @@ describe("user save controller", () => {
     test("should create a new user", async () => {
         try {
             const response = await api.post("/user/save", {
+                ...users.validCredentials,
                 name: "Administrador",
-                email: "evaldtygor@gmail.com",
-                password: "Admin@123",
                 phone: "51988887777"
             });
             expect(response.status).toBe(201);
