@@ -33,7 +33,7 @@ export default class Login implements IUseCase<Input, Output> {
 
         const token = this.tokenProvider.generate({
             id: user.id.value,
-            email: user.email.complete
+            email: user.email
         });
 
         Object.assign(user, { password: null });

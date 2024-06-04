@@ -6,9 +6,7 @@ export default class Authorization {
         const { data } = await AxiosInstance.generate().post("/user/login", users.validCredentials);
 
         return ({
-            headers: {
-                Authorization: `Bearer ${data.token}`
-            }
+            'Authorization': `Bearer ${data.token}`
         });
     }
 }

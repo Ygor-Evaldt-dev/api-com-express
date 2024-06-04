@@ -14,7 +14,6 @@ describe("delete controller", () => {
             }
         });
 
-
         expect(status).toBe(200);
     });
 });

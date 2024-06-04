@@ -1,5 +1,6 @@
-import ITokenProvider from "@/core/ports/ITokenProvider";
 import jwt from "jsonwebtoken";
+
+import ITokenProvider from "@/core/ports/ITokenProvider";
 
 export default class JwtAdapter implements ITokenProvider {
     constructor(
