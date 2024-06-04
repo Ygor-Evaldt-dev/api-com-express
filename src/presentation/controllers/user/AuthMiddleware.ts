@@ -13,31 +13,36 @@ export default class AuthMiddleware {
         private tokenProvider: ITokenProvider
     ) { }
 
-    get() {
+    get user() {
         return async (req: Request, res: Response, next: NextFunction) => {
             const authorization = req.headers.authorization;
             try {
                 if (!authorization) {
-                    this.unauthorizedRes(res);
+                    this.unauthorized(res);
                     return;
                 }
 
-                const tokenUser = this.tokenProvider.validate(authorization.split(" ")[1]) as User;
-                const user = await this.repository.find(tokenUser.email.complete);
+                const tokenUser: any = this.tokenProvider.validate(authorization.split(" ")[1]);
+                const user = await this.repository.find(tokenUser.email);
                 if (user === null) {
-                    this.unauthorizedRes(res);
+                    this.notFound(res);
                     return;
                 }
 
                 (req as any).user = user;
                 next();
             } catch (error: any) {
-                this.unauthorizedRes(res);
+                this.unauthorized(res);
             }
         }
     }
 
-    private unauthorizedRes(res: Response): void {
+    private unauthorized(res: Response): void {
         res.status(HttpStatusCode.UNAUTHORIZED).send("Não autorizado");
+    }
+
+    private notFound(res: Response): void {
+        res.status(HttpStatusCode.NOT_FOUND).send("Usuário não cadastrado");
+
     }
 }

@@ -23,9 +23,7 @@ export default class UserRoutes {
 
         const repository = new LocalRepository();
 
-        const middlewares = [
-            new AuthMiddleware(repository, tokenProvider).get
-        ];
+        const authMiddleware = new AuthMiddleware(repository, tokenProvider).user;
 
         const saveUseCase = new Save(repository, encrypter);
         const loginUseCase = new Login(repository, encrypter, tokenProvider);
@@ -33,6 +31,6 @@ export default class UserRoutes {
 
         new SaveController(this.server, saveUseCase);
         new LoginController(this.server, loginUseCase);
-        new DeleteController(this.server, deleteUseCase, middlewares);
+        new DeleteController(this.server, deleteUseCase, authMiddleware);
     }
 }

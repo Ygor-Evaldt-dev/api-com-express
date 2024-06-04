@@ -1,11 +1,12 @@
-import UserLogin from "@/application/services/user/Login";
-import HttpStatusCode from "@/presentation/constants/HttpStatusCode";
 import { Express, Request, Response } from "express";
+
+import Login from "@/application/services/user/Login";
+import HttpStatusCode from "@/presentation/constants/HttpStatusCode";
 
 export default class LoginController {
     constructor(
         private server: Express,
-        private usecase: UserLogin
+        private usecase: Login
     ) {
         this.server.post("/user/login", async (req: Request, res: Response) => {
             try {

@@ -7,13 +7,13 @@ export default class DeleteController {
     constructor(
         private server: Express,
         private usecase: Delete,
-        private middlewares: any[]
+        ...middleware: any[]
     ) {
-        this.server.delete("/user/delete", ...this.middlewares, async (req: Request, res: Response) => {
+        this.server.delete("/user/delete", middleware, async (req: Request, res: Response) => {
             try {
                 const { email } = req.body;
                 await this.usecase.execute(email);
-                res.status(HttpStatusCode.NO_CONTENT).send("Usuário excluído com sucesso");
+                res.status(HttpStatusCode.OK).send("Usuário excluído com sucesso");
             } catch (error: any) {
                 res.status(HttpStatusCode.NOT_FOUND).send(error.message);
             }

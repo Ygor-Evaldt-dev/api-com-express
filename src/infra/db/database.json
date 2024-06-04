@@ -1,12 +1,4 @@
 {
-    "users": [
-        {
-            "id": "74950261-3670-4aea-82d0-e731a5e0eeda",
-            "email": "evaldtygor@gmail.com",
-            "senha": "$2b$12$AcjlpnWVK5VbWmGgDmcYsuTlopgQP9zCoLnVOhtPSzVoshFQa4zfu",
-            "telefone": "51988887777",
-            "nome_usuario": "Administrador"
-        }
-    ],
+    "users": [],
     "tasks": []
 }
