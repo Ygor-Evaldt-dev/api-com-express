@@ -19,16 +19,16 @@ export default class LoginController {
                 switch (message.trim().toLowerCase()) {
                     case "e-mail não informado":
                     case "senha não informada":
-                        res.status(HttpStatusCode.UNAUTHORIZED).send(message);
+                        res.status(HttpStatusCode.BAD_REQUEST).send(message);
                         break;
                     case "usuário não cadastrado":
                         res.status(HttpStatusCode.NOT_FOUND).send(message);
                         break;
-                    case "denha inválida":
+                    case "senha inválida":
                         res.status(HttpStatusCode.UNAUTHORIZED).send(message);
                         break;
                     default:
-                        res.status(HttpStatusCode.INTERNAL_SERVER_ERROR).send("Erro interno inesperado");
+                        res.status(HttpStatusCode.SERVICE_UNAVAILABLE).send("Serviço não disponível, tente mais tarde");
                         break;
                 }
             }

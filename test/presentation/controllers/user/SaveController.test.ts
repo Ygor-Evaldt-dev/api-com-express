@@ -1,10 +1,8 @@
-import axios from "axios";
-import dotenv from "dotenv";
-dotenv.config();
+import AxiosInstance from "../AxiosInstance";
 
 describe("user save controller", () => {
-    const baseURL = `${process.env.ADDRESS}:${process.env.PORT}`;
-    const api = axios.create({ baseURL });
+    const api = AxiosInstance.generate();
+
     test("should create a new user", async () => {
         try {
             const response = await api.post("/user/save", {
