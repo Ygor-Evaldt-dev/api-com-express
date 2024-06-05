@@ -7,9 +7,9 @@ export default class DeleteController {
     constructor(
         private server: Express,
         private usecase: Delete,
-        ...middleware: any[]
+        private middlewares: any[]
     ) {
-        this.server.delete("/user/delete", middleware, async (req: Request, res: Response) => {
+        this.server.delete("/user/delete", ...this.middlewares, async (req: Request, res: Response) => {
             try {
                 const { email } = req.body;
                 await this.usecase.execute(email);

@@ -31,6 +31,6 @@ export default class UserRoutes {
 
         new SaveController(this.server, saveUseCase);
         new LoginController(this.server, loginUseCase);
-        new DeleteController(this.server, deleteUseCase, authMiddleware);
+        new DeleteController(this.server, deleteUseCase, [authMiddleware]);
     }
 }

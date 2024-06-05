@@ -20,44 +20,19 @@ describe("save user", () => {
         });
     }
 
-    test("should save a new user", async () => {
+    test("should throw error if user has a short name", async () => {
         const { usecase } = makeSut();
-        const exec = async () => await usecase.execute(users.new);
-        await expect(exec()).resolves.toBeUndefined();
-    });
-
-    test("should throw error if is user existing", async () => {
-        const { usecase, deleteUser } = makeSut();
-        const user = users.new;
+        const user = { ...users.new, name: "us" }
 
         const exec = async () => await usecase.execute(user);
-        await expect(exec()).rejects.toThrow("Usuário já cadastrado");
-
-        await deleteUser.execute(user.email);
+        await expect(exec()).rejects.toThrow("Nome deve ter no mínimo 3 caracteres");
     });
 
-    test("should throw error if user has username with spaces", async () => {
+    test("should throw error if user has a too long name", async () => {
         const { usecase } = makeSut();
-        const user = { ...users.new, username: "any username " }
 
-        const exec = async () => await usecase.execute(user);
-        await expect(exec()).rejects.toThrow("Nome de usuário não deve conter espaços vazios");
-    });
-
-    test("should throw error if user has a short username", async () => {
-        const { usecase } = makeSut();
-        const user = { ...users.new, username: "us" }
-
-        const exec = async () => await usecase.execute(user);
-        await expect(exec()).rejects.toThrow("Nome de usuário deve ter no mínimo 3 caracteres");
-    });
-
-    test("should throw error if user has a too long username", async () => {
-        const { usecase } = makeSut();
-        const user = { ...users.new, username: "usernameusernameusernameusername" }
-
-        const exec = async () => await usecase.execute(user);
-        await expect(exec()).rejects.toThrow("Nome de usuário deve ter no máximo 20 caracteres");
+        const exec = async () => await usecase.execute(users.longName);
+        await expect(exec()).rejects.toThrow("Nome deve ter no máximo 100 caracteres");
     });
 
     test("should throw error if user has short password", async () => {
@@ -82,6 +57,22 @@ describe("save user", () => {
         const { usecase } = makeSut();
         const exec = async () => await usecase.execute(users.wrongPhone);
         await expect(exec()).rejects.toThrow("Número de celular inválido");
+    });
+
+    test("should save a new user", async () => {
+        const { usecase } = makeSut();
+        const exec = async () => await usecase.execute(users.new);
+        await expect(exec()).resolves.toBeUndefined();
+    });
+
+    test("should throw error if is user existing", async () => {
+        const { usecase, deleteUser } = makeSut();
+        const user = users.new;
+
+        const exec = async () => await usecase.execute(user);
+        await expect(exec()).rejects.toThrow("Usuário já cadastrado");
+
+        await deleteUser.execute(user.email);
     });
 
 });
