@@ -1,4 +1,4 @@
-import ITaskRepository from "@/core/ports/repository-interfaces/ITaskRepository";
+import ITaskRepository from "@/domain/ports/repository-interfaces/ITaskRepository";
 import IUseCase from "../IUseCase";
 
 export default class Delete implements IUseCase<string, Promise<void>> {

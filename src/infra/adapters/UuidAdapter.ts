@@ -1,4 +1,4 @@
-import IUuid from "@/core/ports/IUuid";
+import IUuid from "@/domain/ports/IUuid";
 import { v4 as uuidv4, validate } from "uuid";
 
 export default class UuidAdapter implements IUuid {

@@ -1,8 +1,8 @@
-import IEncrypter from "@/core/ports/IEncrypter";
-import ITokenProvider from "@/core/ports/ITokenProvider";
-import IUserRepository from "@/core/ports/repository-interfaces/IUserRepository";
+import IEncrypter from "@/domain/ports/IEncrypter";
+import ITokenProvider from "@/domain/ports/ITokenProvider";
+import IUserRepository from "@/domain/ports/repository-interfaces/IUserRepository";
 import IUseCase from "../IUseCase";
-import User from "@/core/models/user/User";
+import User from "@/domain/models/user/User";
 
 type Input = {
     email: string,

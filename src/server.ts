@@ -17,8 +17,6 @@ server.use(cors({
     origin: ["*"]
 }));
 
-
-
 const { PORT, ADDRESS } = process.env;
 server.listen(PORT, () => {
     console.log(`Server online on ${ADDRESS}:${PORT}`);

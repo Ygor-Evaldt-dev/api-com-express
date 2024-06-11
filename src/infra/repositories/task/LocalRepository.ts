@@ -1,5 +1,5 @@
-import Task from "@/core/models/task/Task";
-import ITaskRepository from "@/core/ports/repository-interfaces/ITaskRepository";
+import Task from "@/domain/models/task/Task";
+import ITaskRepository from "@/domain/ports/repository-interfaces/ITaskRepository";
 import FileOrm from "@/infra/db/FileOrm";
 
 import { IEntity } from "./IEntity";

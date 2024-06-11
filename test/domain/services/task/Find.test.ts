@@ -1,4 +1,4 @@
-import FindTask from "@/application/services/task/Find";
+import FindTask from "@/domain/services/task/Find";
 import TaskLocalRepository from "@/infra/repositories/task/LocalRepository";
 import UserLocalRepository from "@/infra/repositories/user/LocalRepository";
 

@@ -1,6 +1,6 @@
-import ITaskRepository from "@/core/ports/repository-interfaces/ITaskRepository";
+import ITaskRepository from "@/domain/ports/repository-interfaces/ITaskRepository";
 import IUseCase from "../IUseCase";
-import Task from "@/core/models/task/Task";
+import Task from "@/domain/models/task/Task";
 
 type Input = {
     userId: string,

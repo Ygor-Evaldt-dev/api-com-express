@@ -16,4 +16,5 @@ describe('bcrypt adapter', () => {
 
         expect(result).toBeTruthy();
     });
+
 });

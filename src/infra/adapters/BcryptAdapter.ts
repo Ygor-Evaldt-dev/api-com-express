@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import IEncrypter from "@/core/ports/IEncrypter";
+import IEncrypter from "@/domain/ports/IEncrypter";
 
 export default class BcryptAdapter implements IEncrypter {
     private saltRounds: number = 12;

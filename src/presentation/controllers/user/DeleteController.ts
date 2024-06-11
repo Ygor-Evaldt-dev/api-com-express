@@ -1,4 +1,4 @@
-import Delete from "@/application/services/user/Delete";
+import Delete from "@/domain/services/user/Delete";
 import HttpStatusCode from "@/presentation/constants/HttpStatusCode";
 import { Express, Request, Response } from "express";
 

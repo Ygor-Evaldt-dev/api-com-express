@@ -1,4 +1,4 @@
-import Id from "@/core/shared/value-objects/Id";
+import Id from "@/domain/shared/value-objects/Id";
 
 export default class Entity {
     readonly id: Id;

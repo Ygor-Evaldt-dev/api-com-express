@@ -1,4 +1,4 @@
-import User from "@/core/models/user/User"
+import User from "@/domain/models/user/User"
 
 export default interface IUserRepository {
     findAll(): Promise<User[] | null>;

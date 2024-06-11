@@ -2,9 +2,9 @@ import { Express } from "express";
 
 import LocalRepository from "@/infra/repositories/user/LocalRepository";
 
-import Save from "@/application/services/user/Save"
-import Login from "@/application/services/user/Login";
-import Delete from "@/application/services/user/Delete";
+import Save from "@/domain/services/user/Save"
+import Login from "@/domain/services/user/Login";
+import Delete from "@/domain/services/user/Delete";
 
 import SaveController from "@/presentation/controllers/user/SaveController";
 import LoginController from "@/presentation/controllers/user/LoginController";

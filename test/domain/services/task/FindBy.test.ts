@@ -1,14 +1,14 @@
-import FindBy from "@/application/services/task/FindBy";
+import FindBy from "@/domain/services/task/FindBy";
 
 import TaskLocalRepository from "@/infra/repositories/task/LocalRepository";
-import ITaskRepository from "@/core/ports/repository-interfaces/ITaskRepository";
+import ITaskRepository from "@/domain/ports/repository-interfaces/ITaskRepository";
 
 import UserLocalRepository from "@/infra/repositories/user/LocalRepository";
-import IUserRepository from "@/core/ports/repository-interfaces/IUserRepository";
+import IUserRepository from "@/domain/ports/repository-interfaces/IUserRepository";
 
 import saveFiveTasksToTest from "../shared/saveFiveTasksToTest";
-import Task from "@/core/models/task/Task";
-import User from "@/core/models/user/User";
+import Task from "@/domain/models/task/Task";
+import User from "@/domain/models/user/User";
 
 describe("find by", () => {
     function makeSut() {

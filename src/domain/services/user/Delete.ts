@@ -1,5 +1,5 @@
-import IUseCase from "@/application/services/IUseCase";
-import IUserRepository from "@/core/ports/repository-interfaces/IUserRepository";
+import IUseCase from "@/domain/services/IUseCase";
+import IUserRepository from "@/domain/ports/repository-interfaces/IUserRepository";
 
 export default class Delete implements IUseCase<string, Promise<void>> {
     constructor(

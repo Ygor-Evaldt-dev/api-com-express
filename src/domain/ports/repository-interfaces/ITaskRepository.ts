@@ -1,4 +1,4 @@
-import Task from "@/core/models/task/Task";
+import Task from "@/domain/models/task/Task";
 
 export default interface ITaskRepository {
     save(task: Task): Promise<void>;

@@ -1,7 +1,7 @@
 import jsonfile from 'jsonfile';
 import path from 'path';
 
-import IDb from '@/core/ports/IDb';
+import IDb from '@/domain/ports/IDb';
 
 const DB_FILE_NAME = 'database.json';
 

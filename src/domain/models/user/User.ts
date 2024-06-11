@@ -1,9 +1,9 @@
-import Entity from "@/core/models/Entity";
+import Entity from "@/domain/models/Entity";
 import Props from "./Props";
-import Password from "@/core/shared/value-objects/Password";
-import Name from "@/core/shared/value-objects/Name";
-import Email from "@/core/shared/value-objects/Email";
-import PhoneNumber from "@/core/shared/value-objects/PhoneNumber";
+import Password from "@/domain/shared/value-objects/Password";
+import Name from "@/domain/shared/value-objects/Name";
+import Email from "@/domain/shared/value-objects/Email";
+import PhoneNumber from "@/domain/shared/value-objects/PhoneNumber";
 
 export default class User extends Entity {
     readonly name: Name;

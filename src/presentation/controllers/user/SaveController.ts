@@ -1,6 +1,6 @@
 import { Express, Request, Response } from "express";
 
-import SaveUser from "@/application/services/user/Save";
+import SaveUser from "@/domain/services/user/Save";
 import HttpStatusCode from "@/presentation/constants/HttpStatusCode";
 
 export default class SaveController {

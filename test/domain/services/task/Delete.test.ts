@@ -1,6 +1,6 @@
 import UserLocalRepository from "@/infra/repositories/user/LocalRepository";
 import TaskLocalRepository from "@/infra/repositories/task/LocalRepository";
-import DeleteTask from "@/application/services/task/Delete";
+import DeleteTask from "@/domain/services/task/Delete";
 
 import createNewTask from "../shared/createNewTask";
 

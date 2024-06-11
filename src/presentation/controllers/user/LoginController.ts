@@ -1,6 +1,6 @@
 import { Express, Request, Response } from "express";
 
-import Login from "@/application/services/user/Login";
+import Login from "@/domain/services/user/Login";
 import HttpStatusCode from "@/presentation/constants/HttpStatusCode";
 
 export default class LoginController {

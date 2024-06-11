@@ -1,5 +1,5 @@
-import SaveUser from "@/application/services/user/Save";
-import DeleteUser from "@/application/services/user/Delete";
+import SaveUser from "@/domain/services/user/Save";
+import DeleteUser from "@/domain/services/user/Delete";
 import BcryptAdapter from "@/infra/adapters/BcryptAdapter";
 import UserLocalRepository from "@/infra/repositories/user/LocalRepository";
 

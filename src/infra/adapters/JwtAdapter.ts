@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-import ITokenProvider from "@/core/ports/ITokenProvider";
+import ITokenProvider from "@/domain/ports/ITokenProvider";
 
 export default class JwtAdapter implements ITokenProvider {
     constructor(
@@ -13,4 +13,6 @@ export default class JwtAdapter implements ITokenProvider {
     validate(token: string): string | object {
         return jwt.verify(token, this.secret);
     }
+
+
 }

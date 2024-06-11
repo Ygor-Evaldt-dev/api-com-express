@@ -1,7 +1,7 @@
 import Dto from "@/application/dtos/ITaskDto";
 import IUseCase from "../IUseCase";
-import Task from "@/core/models/task/Task";
-import ITaskRepository from "@/core/ports/repository-interfaces/ITaskRepository";
+import Task from "@/domain/models/task/Task";
+import ITaskRepository from "@/domain/ports/repository-interfaces/ITaskRepository";
 
 export default class Save implements IUseCase<Dto, void> {
     constructor(

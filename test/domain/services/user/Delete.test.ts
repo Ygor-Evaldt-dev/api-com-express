@@ -1,6 +1,6 @@
-import User from "@/core/models/user/User";
+import User from "@/domain/models/user/User";
 
-import Delete from "@/application/services/user/Delete";
+import Delete from "@/domain/services/user/Delete";
 import UserLocalRepository from "@/infra/repositories/user/LocalRepository";
 
 import users from "../shared/users";

@@ -1,5 +1,5 @@
-import IUserRepository from "@/core/ports/repository-interfaces/IUserRepository";
-import User from "@/core/models/user/User";
+import IUserRepository from "@/domain/ports/repository-interfaces/IUserRepository";
+import User from "@/domain/models/user/User";
 import FileOrm from "@/infra/db/FileOrm";
 
 import { IEntity } from "./IEntity";

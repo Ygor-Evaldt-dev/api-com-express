@@ -1,8 +1,8 @@
-import User from "@/core/models/user/User";
+import User from "@/domain/models/user/User";
 
-import IUseCase from "@/application/services/IUseCase";
-import IEncrypter from "@/core/ports/IEncrypter";
-import IUserRepository from "@/core/ports/repository-interfaces/IUserRepository";
+import IUseCase from "@/domain/services/IUseCase";
+import IEncrypter from "@/domain/ports/IEncrypter";
+import IUserRepository from "@/domain/ports/repository-interfaces/IUserRepository";
 
 type Input = {
     name: string,

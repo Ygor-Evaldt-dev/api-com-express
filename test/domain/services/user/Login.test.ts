@@ -4,8 +4,8 @@ dotenv.config();
 import BcryptAdapter from "@/infra/adapters/BcryptAdapter";
 import JwtAdapter from "@/infra/adapters/JwtAdapter";
 import UserLocalRepository from "@/infra/repositories/user/LocalRepository";
-import UserLogin from "@/application/services/user/Login";
-import User from "@/core/models/user/User";
+import UserLogin from "@/domain/services/user/Login";
+import User from "@/domain/models/user/User";
 import users from "../shared/users";
 
 describe("login", () => {

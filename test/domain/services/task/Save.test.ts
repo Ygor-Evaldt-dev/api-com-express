@@ -1,12 +1,12 @@
-import Save from "@/application/services/task/Save";
+import Save from "@/domain/services/task/Save";
 import TaskLocalRepository from "@/infra/repositories/task/LocalRepository";
 
-import User from "@/core/models/user/User";
+import User from "@/domain/models/user/User";
 import UserLocalRepository from "@/infra/repositories/user/LocalRepository";
 
 import tasks from "../shared/tasks";
 import users from "../shared/users";
-import Task from "@/core/models/task/Task";
+import Task from "@/domain/models/task/Task";
 
 describe("save task", () => {
     function makeSut() {
