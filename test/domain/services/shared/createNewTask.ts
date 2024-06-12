@@ -1,8 +1,8 @@
 import UserLocalRepository from "@/infra/repositories/user/LocalRepository";
-import User from "@/core/models/user/User";
+import User from "@/domain/models/user/User";
 
 import TaskLocalRepository from "@/infra/repositories/task/LocalRepository";
-import Task from "@/core/models/task/Task";
+import Task from "@/domain/models/task/Task";
 
 import users from "./users";
 import tasks from "./tasks";
