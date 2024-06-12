@@ -18,11 +18,10 @@ export default class UserRoutes {
     constructor(
         private server: Express
     ) {
-        const encrypter = new BcryptAdapter();
-        const tokenProvider = new JwtAdapter(process.env.SECRET_TOKEN!);
-
         const repository = new LocalRepository();
 
+        const encrypter = new BcryptAdapter();
+        const tokenProvider = new JwtAdapter(process.env.SECRET_TOKEN!);
         const authMiddleware = new AuthMiddleware(repository, tokenProvider).user;
 
         const saveUseCase = new Save(repository, encrypter);
