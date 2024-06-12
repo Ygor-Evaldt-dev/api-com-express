@@ -1,11 +1,11 @@
 import { Request, Response, NextFunction } from "express";
 
-import ITokenProvider from "@/core/ports/ITokenProvider";
-import IUserRepository from "@/core/ports/repository-interfaces/IUserRepository";
+import ITokenProvider from "@/domain/ports/ITokenProvider";
+import IUserRepository from "@/domain/ports/repository-interfaces/IUserRepository";
 
 import HttpStatusCode from "@/presentation/constants/HttpStatusCode";
 
-import User from "@/core/models/user/User";
+import User from "@/domain/models/user/User";
 
 export default class AuthMiddleware {
     constructor(
