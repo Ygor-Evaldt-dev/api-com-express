@@ -14,7 +14,6 @@ export default class SaveController {
                 const task = Object.assign(req.body, {
                     userId: (req as any).user.id.value
                 });
-                console.log("task", task);
 
                 await this.usecase.execute(task);
                 res.status(HttpStatusCode.CREATED).send("Tarefa cadastrada com sucesso");
