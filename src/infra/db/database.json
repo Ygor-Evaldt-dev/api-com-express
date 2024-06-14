@@ -8,5 +8,12 @@
             "nome_usuario": "Administrador"
         }
     ],
-    "tasks": []
+    "tasks": [
+        {
+            "id": "97014362-0592-43de-a835-1d191cd3eb8a",
+            "titulo": "tarefa de teste",
+            "finalizada": false,
+            "id_usuario": "7fac29df-6190-44ee-a82d-015b242df260"
+        }
+    ]
 }
