@@ -13,6 +13,4 @@ export default class JwtAdapter implements ITokenProvider {
     validate(token: string): string | object {
         return jwt.verify(token, this.secret);
     }
-
-
 }

@@ -27,7 +27,7 @@ export default class LocalRepository implements ITaskRepository {
         const db = await this.orm.open();
         const tasks = db.tasks.filter(task => task.id_usuario === userId);
 
-        const totalPages = Math.round(tasks.length / take);
+        const totalPages = Math.ceil(tasks.length / take);
 
         if (page > totalPages) return tasks.slice(totalPages, (totalPages + 1) * take);
         if (page < 0) return tasks.slice(0, 1 * take);
