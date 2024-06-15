@@ -18,7 +18,7 @@ export default class FindManyController {
                     userId
                 });
 
-                if (response === null) {
+                if (response.totalRegisters === 0) {
                     res.status(HttpStatusCode.NOT_FOUND).send("Nenhuma tarefa cadastrada");
                     return;
                 }

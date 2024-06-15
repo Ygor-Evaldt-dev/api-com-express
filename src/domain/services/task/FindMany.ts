@@ -9,7 +9,8 @@ type Input = {
 }
 
 type Output = {
-    total: number;
+    totalRegisters: number;
+    totalPages: number,
     page: number,
     take: number,
     registers: Task[] | [];
@@ -25,10 +26,12 @@ export default class FindMany implements IUseCase<Input, Output> {
             this.repository.total(userId),
             this.repository.findBy(userId, page, take)
         ];
-        const [total, registers] = await Promise.all(promises);
+        const [totalRegisters, registers] = await Promise.all(promises);
+        const totalPages = Math.ceil(totalRegisters / take);
 
         return ({
-            total,
+            totalRegisters,
+            totalPages,
             page,
             take,
             registers
