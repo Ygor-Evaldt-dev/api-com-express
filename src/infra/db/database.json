@@ -1,1 +1,19 @@
-{"users":[{"id":"7fac29df-6190-44ee-a82d-015b242df260","email":"evaldtygor@gmail.com","senha":"$2b$12$r9IZsB/eMhLZGxxf710BluHN.piqhPRBVYMTaI/KBuaRyw3Bg5nBC","telefone":"51988887777","nome_usuario":"Administrador"}],"tasks":[]}
+{
+    "users": [
+        {
+            "id": "7fac29df-6190-44ee-a82d-015b242df260",
+            "email": "evaldtygor@gmail.com",
+            "senha": "$2b$12$r9IZsB/eMhLZGxxf710BluHN.piqhPRBVYMTaI/KBuaRyw3Bg5nBC",
+            "telefone": "51988887777",
+            "nome_usuario": "Administrador"
+        }
+    ],
+    "tasks": [
+        {
+            "id": "41fd2331-6769-4dcf-ac21-0611362816a9",
+            "titulo": "tarefa de teste",
+            "finalizada": false,
+            "id_usuario": "7fac29df-6190-44ee-a82d-015b242df260"
+        }
+    ]
+}
