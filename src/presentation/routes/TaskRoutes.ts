@@ -1,7 +1,6 @@
 import { Express } from "express";
 
 import AuthMiddleware from "@/presentation/controllers/user/AuthMiddleware";
-import JwtAdapter from "@/infra/adapters/JwtAdapter";
 import UserLocalRepository from "@/infra/repositories/user/LocalRepository";
 import Save from "@/domain/services/task/Save";
 import TaskLocalRepository from "@/infra/repositories/task/LocalRepository";
@@ -10,23 +9,28 @@ import Delete from "@/domain/services/task/Delete";
 import DeleteController from "../controllers/task/DeleteController";
 import FindController from "../controllers/task/FindController";
 import Find from "@/domain/services/task/Find";
+import FindMany from "@/domain/services/task/FindMany";
+import FindManyController from "../controllers/task/FindManyController";
+import ITokenProvider from "@/domain/ports/ITokenProvider";
 
 export default class TaskRoutes {
     constructor(
-        private server: Express
+        private server: Express,
+        private tokenProvider: ITokenProvider
     ) {
         const userRepository = new UserLocalRepository();
         const taskRepository = new TaskLocalRepository();
 
-        const tokenProvider = new JwtAdapter(process.env.SECRET_TOKEN!);
-        const authMiddleware = new AuthMiddleware(userRepository, tokenProvider).user;
+        const authMiddleware = new AuthMiddleware(userRepository, this.tokenProvider).user;
 
         const saveUseCase = new Save(taskRepository);
         const deleteUseCase = new Delete(taskRepository);
         const findUseCase = new Find(taskRepository);
+        const findManyUseCase = new FindMany(taskRepository);
 
         new SaveController(this.server, saveUseCase, [authMiddleware]);
         new DeleteController(this.server, deleteUseCase, [authMiddleware]);
         new FindController(this.server, findUseCase, [authMiddleware]);
+        new FindManyController(this.server, findManyUseCase, [authMiddleware]);
     }
 }

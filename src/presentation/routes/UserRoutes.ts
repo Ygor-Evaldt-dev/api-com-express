@@ -11,21 +11,21 @@ import LoginController from "@/presentation/controllers/user/LoginController";
 import DeleteController from "@/presentation/controllers/user/DeleteController";
 
 import BcryptAdapter from "@/infra/adapters/BcryptAdapter";
-import JwtAdapter from "@/infra/adapters/JwtAdapter";
 import AuthMiddleware from "@/presentation/controllers/user/AuthMiddleware";
+import ITokenProvider from "@/domain/ports/ITokenProvider";
 
 export default class UserRoutes {
     constructor(
-        private server: Express
+        private server: Express,
+        private tokenProvider: ITokenProvider
     ) {
         const repository = new LocalRepository();
 
         const encrypter = new BcryptAdapter();
-        const tokenProvider = new JwtAdapter(process.env.SECRET_TOKEN!);
-        const authMiddleware = new AuthMiddleware(repository, tokenProvider).user;
+        const authMiddleware = new AuthMiddleware(repository, this.tokenProvider).user;
 
         const saveUseCase = new Save(repository, encrypter);
-        const loginUseCase = new Login(repository, encrypter, tokenProvider);
+        const loginUseCase = new Login(repository, encrypter, this.tokenProvider);
         const deleteUseCase = new Delete(repository);
 
         new SaveController(this.server, saveUseCase);
