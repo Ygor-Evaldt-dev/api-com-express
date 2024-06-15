@@ -8,6 +8,8 @@ import TaskLocalRepository from "@/infra/repositories/task/LocalRepository";
 import SaveController from "../controllers/task/SaveController";
 import Delete from "@/domain/services/task/Delete";
 import DeleteController from "../controllers/task/DeleteController";
+import FindController from "../controllers/task/FindController";
+import Find from "@/domain/services/task/Find";
 
 export default class TaskRoutes {
     constructor(
@@ -21,8 +23,10 @@ export default class TaskRoutes {
 
         const saveUseCase = new Save(taskRepository);
         const deleteUseCase = new Delete(taskRepository);
+        const findUseCase = new Find(taskRepository);
 
         new SaveController(this.server, saveUseCase, [authMiddleware]);
         new DeleteController(this.server, deleteUseCase, [authMiddleware]);
+        new FindController(this.server, findUseCase, [authMiddleware]);
     }
 }
