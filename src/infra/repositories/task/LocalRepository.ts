@@ -23,17 +23,17 @@ export default class LocalRepository implements ITaskRepository {
             : null
     }
 
-    async findMany(userId: string, page: number, take: number): Promise<[] | Task[]> {
+    async findMany(userId: string, page: number, take: number, id?: string, title?: string, finished?: boolean): Promise<[] | Task[]> {
         const db = await this.orm.open();
-        const tasks = db.tasks.filter(task => task.id_usuario === userId);
 
-        const totalPages = Math.ceil(tasks.length / take);
+        const tasks = db.tasks.filter(this.filterFunction(userId, id, title, finished));
 
-        if (page > totalPages) return tasks.slice(totalPages, (totalPages + 1) * take);
-        if (page < 0) return tasks.slice(0, 1 * take);
+        const totalPages = this.getTotalPages(tasks.length, take);
 
-        const begin = page * take;
-        const end = (page + 1) * take;
+        if (page > totalPages) return this.pageIsGraterThan(totalPages, take, tasks);
+        if (page < 0) return this.pageIsSmallerThanZero(take, tasks);
+
+        const { begin, end } = this.getBeginEnd(page, take);
 
         return tasks.slice(begin, end);
     }
@@ -70,6 +70,46 @@ export default class LocalRepository implements ITaskRepository {
             finished: finalizada,
             userId: id_usuario
         });
+    }
+
+    private filterFunction(userId: string, id?: string, title?: string, finished?: boolean) {
+        return (task: any) => {
+            if (task.id_usuario !== userId) {
+                return false;
+            }
+            if (id && task.id !== id) {
+                return false;
+            }
+            if (title && task.titulo !== title) {
+                return false;
+            }
+            if (finished !== undefined && task.finalizada !== finished) {
+                return false;
+            }
+            return true;
+        };
+    }
+
+    private getTotalPages(amountRegisters: number, take: number): number {
+        return Math.ceil(amountRegisters / take);
+    }
+
+    private getBeginEnd(page: number, take: number): { begin: number, end: number } {
+        return ({
+            begin: page * take,
+            end: (page + 1) * take
+        });
+    }
+
+    private pageIsGraterThan(totalPages: number, take: number, tasks: Task[]): Task[] {
+        return tasks.slice(totalPages, (totalPages + 1) * take);
+    }
+
+    private pageIsSmallerThanZero(take: number, tasks: Task[]): Task[] {
+        const start = 0;
+        const end = 1 * take;
+
+        return tasks.slice(start, end);
     }
 
 }
