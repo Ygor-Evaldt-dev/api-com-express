@@ -1,6 +1,5 @@
 import Authorization from "../../util/Authorization";
 import AxiosInstance from "../../util/AxiosInstance";
-import tasks from "../../util/tasks";
 
 describe("delete controller", () => {
     const api = AxiosInstance.generate();
