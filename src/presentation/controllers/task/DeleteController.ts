@@ -7,9 +7,9 @@ export default class DeleteController {
     constructor(
         private server: Express,
         private usecase: Delete,
-        private middlewares: any
+        private middlewares: any[]
     ) {
-        this.server.delete("/task/delete/:id", ...middlewares, async (req: Request, res: Response) => {
+        this.server.delete("/task/delete/:id", ...this.middlewares, async (req: Request, res: Response) => {
             try {
                 await this.usecase.execute(req.params?.id);
                 res.status(HttpStatusCode.OK).send("Tarefa deletada com sucesso");
