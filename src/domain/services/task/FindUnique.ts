@@ -1,8 +1,8 @@
 import ITaskRepository from "@/domain/ports/repository-interfaces/ITaskRepository";
-import IUseCase from "../IUseCase";
+import IUseCase from "@/domain/services/IUseCase";
 import Task from "@/domain/models/task/Task";
 
-export default class Find implements IUseCase<string, Promise<Task> | null> {
+export default class FindUnique implements IUseCase<string, Promise<Task> | null> {
     constructor(
         private repository: ITaskRepository
     ) { }

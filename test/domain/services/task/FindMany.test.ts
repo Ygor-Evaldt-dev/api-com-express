@@ -1,4 +1,4 @@
-import FindBy from "@/domain/services/task/FindBy";
+import FindMany from "@/domain/services/task/FindMany";
 
 import TaskLocalRepository from "@/infra/repositories/task/LocalRepository";
 import ITaskRepository from "@/domain/ports/repository-interfaces/ITaskRepository";
@@ -14,7 +14,7 @@ describe("find by", () => {
     function makeSut() {
         const userRepository = new UserLocalRepository();
         const taskRepository = new TaskLocalRepository();
-        const usecase = new FindBy(taskRepository);
+        const usecase = new FindMany(taskRepository);
 
         return ({
             userRepository,

@@ -5,5 +5,5 @@ export default interface ITaskRepository {
     findUnique(id: string): Promise<Task | null>;
     findMany(userId: string, page: number, take: number, id?: string, title?: string, finished?: boolean): Promise<Task[] | []>;
     delete(id: string): Promise<void>;
-    total(userId?: string): Promise<number>;
+    total(userId?: string, id?: string, title?: string, finished?: boolean): Promise<number>;
 }

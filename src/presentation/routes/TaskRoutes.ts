@@ -8,7 +8,7 @@ import SaveController from "../controllers/task/SaveController";
 import Delete from "@/domain/services/task/Delete";
 import DeleteController from "../controllers/task/DeleteController";
 import FindController from "../controllers/task/FindController";
-import Find from "@/domain/services/task/Find";
+import FindUnique from "@/domain/services/task/FindUnique";
 import FindMany from "@/domain/services/task/FindMany";
 import FindManyController from "../controllers/task/FindManyController";
 import ITokenProvider from "@/domain/ports/ITokenProvider";
@@ -25,7 +25,7 @@ export default class TaskRoutes {
 
         const saveUseCase = new Save(taskRepository);
         const deleteUseCase = new Delete(taskRepository);
-        const findUseCase = new Find(taskRepository);
+        const findUseCase = new FindUnique(taskRepository);
         const findManyUseCase = new FindMany(taskRepository);
 
         new SaveController(this.server, saveUseCase, [authMiddleware]);

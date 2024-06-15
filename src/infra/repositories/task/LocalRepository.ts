@@ -45,10 +45,10 @@ export default class LocalRepository implements ITaskRepository {
         await this.orm.save(db);
     }
 
-    async total(userId?: string): Promise<number> {
+    async total(userId?: string, id?: string, title?: string, finished?: boolean): Promise<number> {
         const db = await this.orm.open();
-        return userId
-            ? db.tasks.filter(task => task.id_usuario === userId).length
+        return userId || id || title || finished
+            ? db.tasks.filter(this.filterFunction(userId!, id, title, finished)).length
             : db.tasks.length;
     }
 

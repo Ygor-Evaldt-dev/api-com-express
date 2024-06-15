@@ -1,4 +1,4 @@
-import FindTask from "@/domain/services/task/Find";
+import FindUniqueTask from "@/domain/services/task/FindUnique";
 import TaskLocalRepository from "@/infra/repositories/task/LocalRepository";
 import UserLocalRepository from "@/infra/repositories/user/LocalRepository";
 
@@ -8,7 +8,7 @@ describe("find task", () => {
     function makeSut() {
         const userRepository = new UserLocalRepository();
         const taskRepository = new TaskLocalRepository();
-        const usecase = new FindTask(taskRepository);
+        const usecase = new FindUniqueTask(taskRepository);
 
         return ({
             userRepository,

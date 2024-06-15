@@ -4,6 +4,9 @@ import Task from "@/domain/models/task/Task";
 
 type Input = {
     userId: string,
+    id?: string,
+    title?: string,
+    finished?: boolean,
     page: number;
     take: number;
 }
@@ -16,15 +19,15 @@ type Output = {
     registers: Task[] | [];
 }
 
-export default class FindMany implements IUseCase<Input, Output> {
+export default class Filter implements IUseCase<Input, Output> {
     constructor(
         private repository: ITaskRepository
     ) { }
 
-    async execute({ userId, page, take }: Input): Promise<Output> {
+    async execute({ userId, page, take, id, title, finished }: Input): Promise<Output> {
         const promises: [Promise<number>, Promise<Task[] | []>] = [
-            this.repository.total(userId),
-            this.repository.findMany(userId, page, take)
+            this.repository.total(userId, id, title, finished),
+            this.repository.findMany(userId, page, take, id, title, finished)
         ];
         const [totalRegisters, registers] = await Promise.all(promises);
         const totalPages = Math.ceil(totalRegisters / take);

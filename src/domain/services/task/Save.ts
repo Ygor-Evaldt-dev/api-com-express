@@ -1,5 +1,5 @@
 import Dto from "@/application/dtos/ITaskDto";
-import IUseCase from "../IUseCase";
+import IUseCase from "@/domain/services/IUseCase";
 import Task from "@/domain/models/task/Task";
 import ITaskRepository from "@/domain/ports/repository-interfaces/ITaskRepository";
 

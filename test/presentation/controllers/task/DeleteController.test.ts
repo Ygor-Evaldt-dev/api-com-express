@@ -4,10 +4,11 @@ import AxiosInstance from "../../util/AxiosInstance";
 describe("delete controller", () => {
     const api = AxiosInstance.generate();
 
-    test.skip("Should return http status 200 if to delete with success", async () => {
+    test("Should return http status 200 if to delete with success", async () => {
         const headers: any = await Authorization.getHeaders();
-        const { status } = await api.delete("/task/delete/6e657338-db41-4769-a511-cd941c5e1ec4", { headers });
+        const id = "970f414a-89fc-4305-afdc-70929c06ec3e"
 
+        const { status } = await api.delete(`/task/delete/${id}`, { headers });
         expect(status).toBe(200);
     });
 

@@ -1,7 +1,7 @@
 import IEncrypter from "@/domain/ports/IEncrypter";
 import ITokenProvider from "@/domain/ports/ITokenProvider";
 import IUserRepository from "@/domain/ports/repository-interfaces/IUserRepository";
-import IUseCase from "../IUseCase";
+import IUseCase from "@/domain/services/IUseCase";
 import User from "@/domain/models/user/User";
 
 type Input = {
