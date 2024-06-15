@@ -7,7 +7,7 @@ export default class Delete implements IUseCase<string, Promise<void>> {
     ) { }
 
     async execute(email: string): Promise<Promise<void>> {
-        const userToDelete = await this.repository.find(email);
+        const userToDelete = await this.repository.findUnique(email);
         if (userToDelete === null) throw new Error("Usuário não cadastrado");
 
         await this.repository.delete(userToDelete.id.value);

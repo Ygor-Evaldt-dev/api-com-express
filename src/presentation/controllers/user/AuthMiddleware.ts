@@ -23,7 +23,7 @@ export default class AuthMiddleware {
                 }
 
                 const tokenUser = this.tokenProvider.validate(authorization.split(" ")[1]) as User;
-                const user = await this.repository.find(tokenUser.email.complete);
+                const user = await this.repository.findUnique(tokenUser.email.complete);
                 if (user === null) {
                     this.notFound(res);
                     return;

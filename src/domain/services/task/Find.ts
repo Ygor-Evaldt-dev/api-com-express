@@ -8,7 +8,7 @@ export default class Find implements IUseCase<string, Promise<Task> | null> {
     ) { }
 
     async execute(id: string): Promise<Promise<Task> | null> {
-        const task = await this.repository.find(id);
+        const task = await this.repository.findUnique(id);
         return task;
     }
 }

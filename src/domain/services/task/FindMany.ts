@@ -24,7 +24,7 @@ export default class FindMany implements IUseCase<Input, Output> {
     async execute({ userId, page, take }: Input): Promise<Output> {
         const promises: [Promise<number>, Promise<Task[] | []>] = [
             this.repository.total(userId),
-            this.repository.findBy(userId, page, take)
+            this.repository.findMany(userId, page, take)
         ];
         const [totalRegisters, registers] = await Promise.all(promises);
         const totalPages = Math.ceil(totalRegisters / take);

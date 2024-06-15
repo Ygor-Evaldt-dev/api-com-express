@@ -14,7 +14,7 @@ export default class LocalRepository implements ITaskRepository {
         await this.orm.save(db);
     }
 
-    async find(id: string): Promise<Task | null> {
+    async findUnique(id: string): Promise<Task | null> {
         const db = await this.orm.open();
         const task = db.tasks.find(task => task.id === id);
 
@@ -23,7 +23,7 @@ export default class LocalRepository implements ITaskRepository {
             : null
     }
 
-    async findBy(userId: string, page: number, take: number): Promise<[] | Task[]> {
+    async findMany(userId: string, page: number, take: number): Promise<[] | Task[]> {
         const db = await this.orm.open();
         const tasks = db.tasks.filter(task => task.id_usuario === userId);
 

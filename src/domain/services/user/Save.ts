@@ -18,7 +18,7 @@ export default class Save implements IUseCase<Input, void> {
     ) { }
 
     async execute({ name, email, password, phone }: Input): Promise<void> {
-        const exists = await this.repository.find(email);
+        const exists = await this.repository.findUnique(email);
         if (exists) throw new Error("Usuário já cadastrado");
 
         const encryptPassword = await this.encrypter.encrypt(password);

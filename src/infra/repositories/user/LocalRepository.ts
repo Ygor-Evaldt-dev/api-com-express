@@ -11,7 +11,7 @@ export default class LocalRepository implements IUserRepository {
         this.orm = new FileOrm();
     }
 
-    async findAll(): Promise<User[] | null> {
+    async findMany(): Promise<User[] | null> {
         const db = await this.orm.open();
 
         return db.users[0]
@@ -19,7 +19,7 @@ export default class LocalRepository implements IUserRepository {
             : null
     }
 
-    async find(email: string): Promise<User | null> {
+    async findUnique(email: string): Promise<User | null> {
         const db = await this.orm.open();
         const user = db.users.find(user => user.email === email);
 

@@ -25,7 +25,7 @@ export default class Login implements IUseCase<Input, Output> {
         email,
         password
     }: Input): Promise<Output> {
-        const user = await this.repository.find(email);
+        const user = await this.repository.findUnique(email);
         if (!user) throw new Error("Usuário não cadastrado");
 
         const isValidPassword = await this.encrypter.compare(password, user.password.value);

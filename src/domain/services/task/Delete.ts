@@ -7,7 +7,7 @@ export default class Delete implements IUseCase<string, Promise<void>> {
     ) { }
 
     async execute(id: string): Promise<Promise<void>> {
-        const task = await this.repository.find(id);
+        const task = await this.repository.findUnique(id);
         if (task === null) throw new Error("Tarefa não cadastrada");
 
         await this.repository.delete(id);
