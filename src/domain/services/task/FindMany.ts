@@ -15,7 +15,7 @@ type Output = {
     registers: Task[] | [];
 }
 
-export default class FindBy implements IUseCase<Input, Output> {
+export default class FindMany implements IUseCase<Input, Output> {
     constructor(
         private repository: ITaskRepository
     ) { }
