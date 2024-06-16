@@ -25,8 +25,8 @@ export default class FilterController {
 
                 const response = await this.usecase.execute(params);
 
-                if (response.totalRegisters === 0) {
-                    res.status(HttpStatusCode.NOT_FOUND).send("Nenhuma tarefa cadastrada");
+                if (response.registers.length === 0) {
+                    res.sendStatus(HttpStatusCode.NOT_FOUND).send("Nenhuma tarefa encontrada");
                     return;
                 }
 

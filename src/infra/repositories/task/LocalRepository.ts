@@ -81,7 +81,7 @@ export default class LocalRepository implements ITaskRepository {
             if (id && task.id !== id) {
                 return false;
             }
-            if (title && task.titulo !== title) {
+            if (title && !task.titulo.includes(title)) {
                 return false;
             }
             if (finished !== undefined && task.finalizada !== finished) {

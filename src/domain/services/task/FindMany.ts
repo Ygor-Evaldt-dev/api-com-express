@@ -2,18 +2,12 @@ import ITaskRepository from "@/domain/ports/repository-interfaces/ITaskRepositor
 import IUseCase from "@/domain/services/IUseCase";
 import Task from "@/domain/models/task/Task";
 
+import { PaginatedOutput as Output } from "@/domain/services/task/types/PaginatedOutput";
+
 type Input = {
     userId: string,
     page: number;
     take: number;
-}
-
-type Output = {
-    totalRegisters: number;
-    totalPages: number,
-    page: number,
-    take: number,
-    registers: Task[] | [];
 }
 
 export default class FindMany implements IUseCase<Input, Output> {

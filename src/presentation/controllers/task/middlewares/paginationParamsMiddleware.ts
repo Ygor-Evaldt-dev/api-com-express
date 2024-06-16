@@ -10,6 +10,7 @@ export default function paginationParams(req: Request, res: Response, next: Next
         !userId
         || isNaN(parseInt(page))
         || isNaN(parseInt(take))
+        || parseInt(take) <= 0
     ) {
         return res.status(HttpStatusCode.BAD_REQUEST).send("Parâmetros de URL inválidos");
     }
