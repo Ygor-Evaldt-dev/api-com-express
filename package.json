@@ -4,7 +4,7 @@
     "main": "index.js",
     "scripts": {
         "build": "tsc",
-        "dev": "ts-node-dev --respawn --transpile-only -r tsconfig-paths/register src/index.ts",
+        "dev": "ts-node-dev --respawn --transpile-only -r tsconfig-paths/register src/index.ts && services:up",
         "services:up": "docker compose -f ./docker-compose.yml up -d",
         "services:stop": "docker compose -f ./docker-compose.yml stop",
         "services:down": "docker compose -f ./docker-compose.yml down",

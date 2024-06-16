@@ -3,7 +3,7 @@ version: 'latest'
 services:
   postgres:
     image: postgres:latest
-    env_file: ./.env
+    env_file: ./.env.development
     container_name: postgres
     ports:
       - '5432:5432'
@@ -14,7 +14,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4:latest
-    env_file: ./.env
+    env_file: ./.env.development
     container_name: pgadmin
     ports:
       - '8081:80'
