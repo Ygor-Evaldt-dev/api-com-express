@@ -34,6 +34,32 @@ describe("find many controller", () => {
         }
     });
 
+    test("should return http status code 400 bad request if url param page is invalid", async () => {
+        try {
+            const headers: any = await Authorization.getHeaders();
+
+            const { page, take } = params;
+            const { status } = await api.get(`/task/findMany/anyUserID/invalid/${take}`, { headers });
+
+            expect(status).toBe(400);
+        } catch ({ response }: any) {
+            expect(response.status).toBe(400);
+        }
+    });
+
+    test("should return http status code 400 bad request if url param take is invalid", async () => {
+        try {
+            const headers: any = await Authorization.getHeaders();
+
+            const { page, take } = params;
+            const { status } = await api.get(`/task/findMany/anyUserID/${page}/invalid`, { headers });
+
+            expect(status).toBe(400);
+        } catch ({ response }: any) {
+            expect(response.status).toBe(400);
+        }
+    });
+
     test("should return http status code 200 ok if user has tasks", async () => {
         try {
             const headers: any = await Authorization.getHeaders();

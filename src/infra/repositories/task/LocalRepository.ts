@@ -35,7 +35,8 @@ export default class LocalRepository implements ITaskRepository {
 
         const { begin, end } = this.getBeginEnd(page, take);
 
-        return tasks.slice(begin, end);
+        const sliceTasks = tasks.slice(begin, end);
+        return sliceTasks.map(task => this.fromDataBase(task));
     }
 
     async delete(id: string): Promise<void> {
@@ -101,15 +102,17 @@ export default class LocalRepository implements ITaskRepository {
         });
     }
 
-    private pageIsGraterThan(totalPages: number, take: number, tasks: Task[]): Task[] {
-        return tasks.slice(totalPages, (totalPages + 1) * take);
+    private pageIsGraterThan(totalPages: number, take: number, tasks: IEntity[]): Task[] {
+        const sliceTasks = tasks.slice(totalPages, (totalPages + 1) * take);
+        return sliceTasks.map(task => this.fromDataBase(task));
     }
 
-    private pageIsSmallerThanZero(take: number, tasks: Task[]): Task[] {
+    private pageIsSmallerThanZero(take: number, tasks: IEntity[]): Task[] {
         const start = 0;
         const end = 1 * take;
 
-        return tasks.slice(start, end);
+        const sliceTasks = tasks.slice(start, end);
+        return sliceTasks.map(task => this.fromDataBase(task));
     }
 
 }
