@@ -61,24 +61,28 @@ Ao executar 'npm run dev' também será realizado a criação de um container do
         ```bash
         /user/save
         ```
+        Body
         ```json
-        // body
         {
-            "name": "name",
-            "email": "email",
-            "password": "pass",
-            "phone": "dddphone"
+            "name": "nome",
+            "email": "email@email.com",
+            "password": "S3nh@",
+            "phone": "00122223333"
         }
         ```
+        - name: Opcional
+        - email: Obrigatório, precisa ser um email válido
+        - password: Obrigatório, precisa conter pelo menos uma letra maiúscula, um número e um caracter especial
+        - phone: Opcional
     - Logar - POST 
         ```bash
         /user/login
         ```
+        Body
         ```json
-        // body
         {
-            "email": "validemail@email.com",
-            "password": "validpassword"
+            "email": "email_valido@email.com",
+            "password": "S3nh@valida"
         }
         ```
     - Excluir - DELETE
@@ -86,10 +90,10 @@ Ao executar 'npm run dev' também será realizado a criação de um container do
         ```bash
         /user/delete
         ```
+        Body
         ```json
-        // body
         {
-            "email": "validemail@email.com"
+            "email": "email_valido@email.com"
         }
         ```
 - Tarefa: Necessário estar autênticado
@@ -97,15 +101,16 @@ Ao executar 'npm run dev' também será realizado a criação de um container do
         ```bash
         /task/save
         ```
+        Body
         ```json
-        // body
         {
-            "name": "name",
-            "email": "email", //obrigatório
-            "password": "pass", //obrigatório
-            "phone": "dddphonenumber"
+            "title": "Tarefa de teste",
+            "description": "Descrição"
         }
         ```
+        - title: Obrigatório, deve ter no mínimo 3 caracteres
+        - description: Opcional
+        
     - Buscar - GET 
         ```bash
         /task/find/:id
@@ -137,3 +142,38 @@ Ao executar 'npm run dev' também será realizado a criação de um container do
         /task/delete/:id
         ```
         - id: Id da tarefa
+
+### Endpoints em construção
+- Usuário
+    - Atualizar - PATCH
+    ```bash
+    /user/update
+    ```
+    Body
+    ```json
+    {
+        "name": "nome",
+        "email": "email@atualizado.com",
+        "password": "senhaatualizada",
+        "phone": "00122223333"
+    }
+    ```
+    - Todos os parâmetros são opcionais
+- Tarefa
+    - Atualizar - PATCH
+    ```bash
+    /task/update
+    ```
+    Body
+    ```json
+    {
+        "title": "Tarefa de teste",
+        "description": "Descrição",
+        "finished": false,
+    }
+    ```
+    - Todos os parâmetros são opcionais
+
+## Licença
+
+- [GNU GENERAL PUBLIC LICENSE](https://github.com/Ygor-Evaldt-dev/api-com-express/tree/master?tab=GPL-3.0-1-ov-file)
