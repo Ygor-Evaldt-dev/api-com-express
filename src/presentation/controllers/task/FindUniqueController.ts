@@ -3,7 +3,7 @@ import { Express, Request, Response } from "express";
 import FindUnique from "@/domain/services/task/FindUnique";
 import HttpStatusCode from "@/presentation/constants/HttpStatusCode";
 
-export default class FindController {
+export default class FindUniqueController {
     constructor(
         private server: Express,
         private usecase: FindUnique,

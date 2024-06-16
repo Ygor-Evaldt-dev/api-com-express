@@ -9,13 +9,13 @@ export default class FindManyController {
         private usecase: FindMany,
         private middlewares: any[]
     ) {
-        this.server.get("/task/findMany/:page/:take/:userId", ...this.middlewares, async (req: Request, res: Response) => {
+        this.server.get("/task/findMany/:userId/:page/:take", ...this.middlewares, async (req: Request, res: Response) => {
             try {
                 const { page, take, userId } = req.params;
                 const response = await this.usecase.execute({
+                    userId,
                     page: +page,
-                    take: +take,
-                    userId
+                    take: +take
                 });
 
                 if (response.totalRegisters === 0) {

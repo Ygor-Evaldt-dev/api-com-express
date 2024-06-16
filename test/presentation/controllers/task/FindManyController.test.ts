@@ -13,7 +13,7 @@ describe("find many controller", () => {
     test("should return http status code 401 unauthorized if user is not logged", async () => {
         try {
             const { page, take, userId } = params;
-            const { status } = await api.get(`/task/findMany/${page}/${take}/${userId}`);
+            const { status } = await api.get(`/task/findMany/${userId}/${page}/${take}`);
 
             expect(status).toBe(401);
         } catch ({ response }: any) {
@@ -26,7 +26,7 @@ describe("find many controller", () => {
             const headers: any = await Authorization.getHeaders();
 
             const { page, take } = params;
-            const { status } = await api.get(`/task/findMany/${page}/${take}/anyUserID`, { headers });
+            const { status } = await api.get(`/task/findMany/anyUserID/${page}/${take}`, { headers });
 
             expect(status).toBe(404);
         } catch ({ response }: any) {
@@ -39,7 +39,7 @@ describe("find many controller", () => {
             const headers: any = await Authorization.getHeaders();
 
             const { page, take, userId } = params;
-            const { status, data } = await api.get(`/task/findMany/${page}/${take}/${userId}`, { headers });
+            const { status, data } = await api.get(`/task/findMany/${userId}/${page}/${take}`, { headers });
 
             expect(status).toBe(200);
             expect(data.totalRegisters).toBeGreaterThan(0);
