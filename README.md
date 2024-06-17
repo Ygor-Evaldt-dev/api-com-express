@@ -48,11 +48,11 @@ Após baixar as dependências, você deve ser capaz de executar o projeto localm
 npm run dev
 ```
 Este comando irá executar um script do arquivo package.json que está configurado para executar um servidor de desenvolvimento local utilizando o ts-node-dev. <br>
-Ao executar 'npm run dev' também será realizado a criação de um container docker com as imagens do postgres e do pgAdmin para trabalhar com o banco de dados da aplicação.
+<!-- Ao executar 'npm run dev' também será realizado a criação de um container docker com as imagens do postgres e do pgAdmin para trabalhar com o banco de dados da aplicação. -->
 
 ### Conferindo se tudo deu certo
 - Acesse [http://localhost:3000/user/login](http://localhost:3000/user/login) para criar um cadastro na aplicação.
-- Acesse [http://localhost:8081](http://localhost:8081) para acessar o pgAdmin com as credenciais definidas no arquivo '.env.development'
+<!-- - Acesse [http://localhost:8081](http://localhost:8081) para acessar o pgAdmin com as credenciais definidas no arquivo '.env.development' -->
 
 ## Como utilizar
 
