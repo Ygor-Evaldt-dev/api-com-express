@@ -11,6 +11,23 @@ export default class LocalRepository implements IUserRepository {
         this.orm = new FileOrm();
     }
 
+    async save(user: User): Promise<void> {
+        const db = await this.orm.open();
+
+        const exists = await this.findUnique(user.id.value);
+        if (exists) {
+            db.users.forEach((item) => {
+                if (item.id === user.id.value)
+                    item = this.toDataBase(user);
+            });
+        } else {
+            db.users.push(this.toDataBase(user));
+        }
+
+
+        await this.orm.save(db);
+    }
+
     async findMany(): Promise<User[] | null> {
         const db = await this.orm.open();
 
@@ -19,20 +36,15 @@ export default class LocalRepository implements IUserRepository {
             : null
     }
 
-    async findUnique(email: string): Promise<User | null> {
+    async findUnique(email?: string, id?: string): Promise<User | null> {
         const db = await this.orm.open();
-        const user = db.users.find(user => user.email === email);
+        const user = email
+            ? db.users.find(user => user.email === email)
+            : db.users.find(user => user.id === id);
 
         return user
             ? this.fromDataBase(user)
             : null;
-    }
-
-    async save(user: User): Promise<void> {
-        const db = await this.orm.open();
-
-        db.users.push(this.toDataBase(user));
-        await this.orm.save(db);
     }
 
     async delete(id: string): Promise<void> {

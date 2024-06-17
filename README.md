@@ -1,4 +1,5 @@
 # API REST - Lista de tarefas
+Status: Em desenvolvimento
 
 ## Apresentação
 Esta é uma API REST de lista de tarefas com autenticação de usuário. <br>

@@ -1,8 +1,8 @@
 import User from "@/domain/models/user/User"
 
 export default interface IUserRepository {
-    findUnique(email: string): Promise<User | null>;
-    findMany(): Promise<User[] | null>;
     save(user: User): Promise<void>;
+    findUnique(email?: string, id?: string): Promise<User | null>;
+    findMany(): Promise<User[] | null>;
     delete(id: string): Promise<void>;
 }
