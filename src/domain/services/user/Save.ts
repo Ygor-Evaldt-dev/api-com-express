@@ -5,10 +5,10 @@ import IEncrypter from "@/domain/ports/IEncrypter";
 import IUserRepository from "@/domain/ports/repository-interfaces/IUserRepository";
 
 type Input = {
-    name: string,
+    name?: string,
     email: string,
     password: string,
-    phone: string
+    phone?: string
 }
 
 export default class Save implements IUseCase<Input, void> {

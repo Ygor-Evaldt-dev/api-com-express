@@ -17,7 +17,7 @@ describe("find controler", () => {
 
     test("should return http status code 404 not found if task is not exists", async () => {
         try {
-            const headers: any = await Authorization.validCredentials();
+            const headers: any = await Authorization.getHeaders();
             const id = "any_id";
             const { status, data } = await api.get(`/task/${id}`, { headers });
 
@@ -29,7 +29,7 @@ describe("find controler", () => {
     });
 
     test("should return http status code 200 if to find an exists task", async () => {
-        const headers: any = await Authorization.validCredentials();
+        const headers: any = await Authorization.getHeaders();
         const id = "41fd2331-6769-4dcf-ac21-0611362816a9";
         const { status, data } = await api.get(`/task/${id}`, { headers });
 

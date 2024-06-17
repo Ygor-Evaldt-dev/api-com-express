@@ -6,10 +6,10 @@ import Email from "@/domain/shared/value-objects/Email";
 import PhoneNumber from "@/domain/shared/value-objects/PhoneNumber";
 
 export default class User extends Entity {
-    readonly name: Name;
+    readonly name?: Name;
     readonly password: Password;;
     readonly email: Email;
-    readonly phone: PhoneNumber;
+    readonly phone?: PhoneNumber;
 
     constructor({
         id,
@@ -19,9 +19,10 @@ export default class User extends Entity {
         phone
     }: Props) {
         super(id!);
-        this.name = new Name(name);
         this.password = new Password(password);
         this.email = new Email(email);
-        this.phone = new PhoneNumber(phone);
+
+        if (name) this.name = new Name(name);
+        if (phone) this.phone = new PhoneNumber(phone);
     }
 }

@@ -47,8 +47,8 @@ export default class LocalRepository implements IUserRepository {
             id: id.value,
             email: email.complete,
             senha: password.value,
-            telefone: phone.value,
-            nome_usuario: name.value
+            telefone: phone ? phone.value : undefined,
+            nome_usuario: name ? name.value : undefined
         });
     }
 

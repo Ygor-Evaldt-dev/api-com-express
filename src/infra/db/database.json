@@ -1,12 +1,1 @@
-{
-    "users": [
-        {
-            "id": "7fac29df-6190-44ee-a82d-015b242df260",
-            "email": "evaldtygor@gmail.com",
-            "senha": "$2b$12$r9IZsB/eMhLZGxxf710BluHN.piqhPRBVYMTaI/KBuaRyw3Bg5nBC",
-            "telefone": "51988887777",
-            "nome_usuario": "Administrador"
-        }
-    ],
-    "tasks": []
-}
+{"users":[{"id":"7fac29df-6190-44ee-a82d-015b242df260","email":"evaldtygor@gmail.com","senha":"$2b$12$r9IZsB/eMhLZGxxf710BluHN.piqhPRBVYMTaI/KBuaRyw3Bg5nBC","telefone":"51988887777","nome_usuario":"Administrador"},{"id":"ab0e8cdf-2e29-4f5a-92ce-c06d06d221d1","email":"teste01@gmail.com","senha":"$2b$12$3K.XhAcjSSA9cyGQu6lqcerMLF0HwDDZ4AamncuOt/IOWHq6uzSi."}],"tasks":[]}
