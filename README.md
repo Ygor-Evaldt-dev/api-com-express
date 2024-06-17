@@ -59,7 +59,7 @@ Ao executar 'npm run dev' também será realizado a criação de um container do
 - Usuário
     - Salvar - POST 
         ```bash
-        /user/save
+        /user
         ```
         Body
         ```json
@@ -99,7 +99,7 @@ Ao executar 'npm run dev' também será realizado a criação de um container do
 - Tarefa: Necessário estar autênticado
     - Salvar - POST 
         ```bash
-        /task/save
+        /task
         ```
         Body
         ```json
@@ -113,21 +113,19 @@ Ao executar 'npm run dev' também será realizado a criação de um container do
         
     - Buscar - GET 
         ```bash
-        /task/find/:id
+        /task/:id
         ```
         - id: id da tarefa
-    - Buscar muitos - GET 
+    - Buscar pagina - GET 
         ```bash
-        /task/findMany/:userId/:page/:take
+        /task/:page/:take
         ```
-        - userId: Id do usuário que cadastrou a tarefa
         - page: Página com registros, inicia em 0
         - take: Quantidade de registros por página
     - Filtrar - GET 
         ```bash
-        /task/filter/:userId/:page/:take
+        /task/filter/:page/:take
         ```
-        - userId: Id do usuário que cadastrou a tarefa
         - page: Página com registros, inicia em 0
         - take: Quantidade de registros por página
         - Parâmetros de query:
@@ -147,7 +145,7 @@ Ao executar 'npm run dev' também será realizado a criação de um container do
 - Usuário
     - Atualizar - PATCH
     ```bash
-    /user/update
+    /user
     ```
     Body
     ```json
@@ -162,7 +160,7 @@ Ao executar 'npm run dev' também será realizado a criação de um container do
 - Tarefa
     - Atualizar - PATCH
     ```bash
-    /task/update
+    /task
     ```
     Body
     ```json
