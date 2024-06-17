@@ -9,17 +9,17 @@ export default class FindManyController {
         private usecase: FindMany,
         private middlewares: any[]
     ) {
-        this.server.get("/task/findMany/:userId/:page/:take", ...this.middlewares, async (req: Request, res: Response) => {
+        this.server.get("/task/:page/:take", ...this.middlewares, async (req: Request, res: Response) => {
             try {
                 const { page, take, userId } = req.params;
                 const response = await this.usecase.execute({
-                    userId,
+                    userId: (req as any).user.id.value,
                     page: +page,
                     take: +take
                 });
 
                 if (response.registers.length === 0) {
-                    res.sendStatus(HttpStatusCode.NOT_FOUND).send("Nenhuma tarefa cadastrada");
+                    res.status(HttpStatusCode.NOT_FOUND).send("Nenhuma tarefa cadastrada");
                     return;
                 }
 

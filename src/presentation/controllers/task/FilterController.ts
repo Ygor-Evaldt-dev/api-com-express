@@ -9,13 +9,13 @@ export default class FilterController {
         private usecase: Filter,
         private middlewares: any[]
     ) {
-        this.server.get("/task/filter/:userId/:page/:take", ...this.middlewares, async (req: Request, res: Response) => {
+        this.server.get("/task/filter/:page/:take", ...this.middlewares, async (req: Request, res: Response) => {
             try {
-                const { userId, page, take } = req.params;
+                const { page, take } = req.params;
                 const { id, title, finished } = req.query;
 
                 const params: any = {
-                    userId,
+                    userId: (req as any).user?.id?.value,
                     page,
                     take,
                     id,
@@ -26,7 +26,7 @@ export default class FilterController {
                 const response = await this.usecase.execute(params);
 
                 if (response.registers.length === 0) {
-                    res.sendStatus(HttpStatusCode.NOT_FOUND).send("Nenhuma tarefa encontrada");
+                    res.status(HttpStatusCode.NOT_FOUND).send("Nenhuma tarefa encontrada");
                     return;
                 }
 

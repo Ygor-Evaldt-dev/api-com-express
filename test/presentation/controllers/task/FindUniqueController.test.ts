@@ -7,7 +7,7 @@ describe("find controler", () => {
     test("should return http status code 401 unauthorized if user is not logged", async () => {
         try {
             const id = "any_id";
-            const { status } = await api.get(`/task/find/${id}`);
+            const { status } = await api.get(`/task/${id}`);
 
             expect(status).toBe(401);
         } catch ({ response }: any) {
@@ -17,9 +17,9 @@ describe("find controler", () => {
 
     test("should return http status code 404 not found if task is not exists", async () => {
         try {
-            const headers: any = await Authorization.getHeaders();
+            const headers: any = await Authorization.validCredentials();
             const id = "any_id";
-            const { status, data } = await api.get(`/task/find/${id}`, { headers });
+            const { status, data } = await api.get(`/task/${id}`, { headers });
 
             expect(status).toBe(200);
             expect(data.id.value).toBe(id);
@@ -29,9 +29,9 @@ describe("find controler", () => {
     });
 
     test("should return http status code 200 if to find an exists task", async () => {
-        const headers: any = await Authorization.getHeaders();
+        const headers: any = await Authorization.validCredentials();
         const id = "41fd2331-6769-4dcf-ac21-0611362816a9";
-        const { status, data } = await api.get(`/task/find/${id}`, { headers });
+        const { status, data } = await api.get(`/task/${id}`, { headers });
 
         expect(status).toBe(200);
         expect(data.id.value).toBe(id);

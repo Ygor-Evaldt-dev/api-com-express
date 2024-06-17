@@ -6,7 +6,7 @@ describe("user save controller", () => {
 
     test("should create a new user", async () => {
         try {
-            const response = await api.post("/user/save", {
+            const response = await api.post("/user", {
                 ...users.validCredentials,
                 name: "Administrador",
                 phone: "51988887777"

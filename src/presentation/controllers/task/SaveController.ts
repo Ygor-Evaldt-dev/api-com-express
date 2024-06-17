@@ -9,7 +9,7 @@ export default class SaveController {
         private usecase: Save,
         private middlewares: any[]
     ) {
-        this.server.post("/task/save", ...this.middlewares, async (req: Request, res: Response) => {
+        this.server.post("/task", ...this.middlewares, async (req: Request, res: Response) => {
             try {
                 const task = Object.assign(req.body, {
                     userId: (req as any).user.id.value

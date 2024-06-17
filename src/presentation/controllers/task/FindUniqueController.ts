@@ -9,7 +9,7 @@ export default class FindUniqueController {
         private usecase: FindUnique,
         private middlewares: any[]
     ) {
-        this.server.get("/task/find/:id", ...this.middlewares, async (req: Request, res: Response) => {
+        this.server.get("/task/:id", ...this.middlewares, async (req: Request, res: Response) => {
             try {
                 const response = await this.usecase.execute(req.params.id);
                 if (response === null) {

@@ -8,7 +8,7 @@ export default class SaveController {
         private server: Express,
         private usecase: SaveUser
     ) {
-        this.server.post("/user/save", async (req: Request, res: Response) => {
+        this.server.post("/user", async (req: Request, res: Response) => {
             try {
                 const dto = req.body;
                 await this.usecase.execute(dto);

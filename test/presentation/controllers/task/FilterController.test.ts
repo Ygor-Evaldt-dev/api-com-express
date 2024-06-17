@@ -18,8 +18,8 @@ describe("filter controller", () => {
     test("Should return http status code 200 if valid url params are provided and user has tasks", async () => {
         const headers = await Authorization.getHeaders();
 
-        const { userId, page, take } = params;
-        const { status, data } = await api.get(`/task/filter/${userId}/${page}/${take}`, {
+        const { page, take } = params;
+        const { status, data } = await api.get(`/task/filter/${page}/${take}`, {
             headers,
             params: queryParams
         });
@@ -33,7 +33,7 @@ describe("filter controller", () => {
             const headers = await Authorization.getHeaders();
 
             const { page, take } = params;
-            const { status, data } = await api.get(`/task/filter/any_id/${page}/${take}`, {
+            const { status, data } = await api.get(`/task/filter/${page}/${take}`, {
                 headers,
                 params: queryParams
             });
@@ -48,15 +48,15 @@ describe("filter controller", () => {
         try {
             const headers = await Authorization.getHeaders();
 
-            const { userId, page, take } = params;
-            const { status, data } = await api.get(`/task/filter/${userId}/100/${take}`, {
+            const { page, take } = params;
+            const { status, data } = await api.get(`/task/filter/10/${take}`, {
                 headers,
                 params: queryParams
             });
 
             expect(status).toBe(404);
-        } catch ({ response }: any) {
-            expect(response.status).toBe(404);
+        } catch (error: any) {
+            expect(error.response?.status).toBe(404);
         }
     });
 
@@ -64,8 +64,8 @@ describe("filter controller", () => {
         try {
             const headers = await Authorization.getHeaders();
 
-            const { userId, page, take } = params;
-            const { status, data } = await api.get(`/task/filter/${userId}/${page}/0`, {
+            const { page, take } = params;
+            const { status, data } = await api.get(`/task/filter/${page}/0`, {
                 headers,
                 params: queryParams
             });

@@ -4,11 +4,10 @@ import { PaginationParams } from "@/presentation/types";
 import { Request, Response, NextFunction } from "express";
 
 export default function paginationParams(req: Request, res: Response, next: NextFunction) {
-    const { userId, page, take } = req.params as PaginationParams;
+    const { page, take } = req.params as PaginationParams;
 
     if (
-        !userId
-        || isNaN(parseInt(page))
+        isNaN(parseInt(page))
         || isNaN(parseInt(take))
         || parseInt(take) <= 0
     ) {

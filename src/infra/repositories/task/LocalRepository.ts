@@ -29,10 +29,6 @@ export default class LocalRepository implements ITaskRepository {
         const tasks = db.tasks.filter(this.filterFunction(userId, id, title, finished));
 
         const totalPages = this.getTotalPages(tasks.length, take);
-
-        if (page > totalPages) return this.pageIsGraterThan(totalPages, take, tasks);
-        if (page < 0) return this.pageIsSmallerThanZero(take, tasks);
-
         const { begin, end } = this.getBeginEnd(page, take);
 
         const sliceTasks = tasks.slice(begin, end);
@@ -101,18 +97,4 @@ export default class LocalRepository implements ITaskRepository {
             end: (page + 1) * take
         });
     }
-
-    private pageIsGraterThan(totalPages: number, take: number, tasks: IEntity[]): Task[] {
-        const sliceTasks = tasks.slice(totalPages, (totalPages + 1) * take);
-        return sliceTasks.map(task => this.fromDataBase(task));
-    }
-
-    private pageIsSmallerThanZero(take: number, tasks: IEntity[]): Task[] {
-        const start = 0;
-        const end = 1 * take;
-
-        const sliceTasks = tasks.slice(start, end);
-        return sliceTasks.map(task => this.fromDataBase(task));
-    }
-
 }
